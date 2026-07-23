@@ -1,0 +1,57 @@
+/* ============================================
+   KISMET CODE DIGITAL — DESIGN TOKENS
+   Pulled directly from the logo: navy compass,
+   gold knotwork, copper accents, warm parchment.
+   ============================================ */
+
+:root {
+  /* Color — named for what they are, not generic */
+  --ink-navy: #0f2438;       /* primary text, compass rings */
+  --slate: #3a5468;          /* secondary text */
+  --gold: #b98a3e;           /* primary accent — the knotwork gold */
+  --copper: #c26b3f;         /* secondary accent — warm highlight */
+  --parchment: #faf7f1;      /* page background, warm not stark */
+  --parchment-dim: #f2ecdf;  /* card / section background */
+  --near-black: #1a1712;     /* body copy, softer than pure black */
+  --line: rgba(15, 36, 56, 0.14); /* hairline rule color */
+  --line-strong: rgba(15, 36, 56, 0.28);
+
+  /* Typography */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Work Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --type-hero: clamp(2.75rem, 6vw, 5rem);
+  --type-h1: clamp(2rem, 4vw, 3.25rem);
+  --type-h2: clamp(1.5rem, 2.6vw, 2.1rem);
+  --type-h3: 1.25rem;
+  --type-body: 1.0625rem;
+  --type-small: 0.875rem;
+  --type-eyebrow: 0.8125rem;
+
+  /* Spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+  --space-7: 9rem;
+
+  /* Layout */
+  --content-width: 1120px;
+  --content-width-narrow: 720px;
+  --radius: 3px; /* engraved, not rounded-app */
+
+  /* Motion */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

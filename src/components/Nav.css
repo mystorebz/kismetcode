@@ -1,0 +1,105 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 247, 241, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav__logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.nav__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink-navy);
+  letter-spacing: 0.01em;
+}
+
+.nav__wordmark em {
+  font-style: italic;
+  color: var(--slate);
+  font-weight: 400;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.nav__link {
+  font-size: 0.9375rem;
+  color: var(--slate);
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.2s ease;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-settle);
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--ink-navy);
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  transform: scaleX(1);
+}
+
+.nav__cta {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--parchment);
+  background: var(--ink-navy);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius);
+  transition: background 0.2s ease;
+}
+
+.nav__cta:hover {
+  background: var(--copper);
+}
+
+@media (max-width: 720px) {
+  .nav__links {
+    gap: var(--space-2);
+  }
+  .nav__link {
+    display: none;
+  }
+  .nav__wordmark {
+    font-size: 0.9rem;
+  }
+}
