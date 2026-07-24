@@ -3,32 +3,24 @@ import './Home.css';
 
 const PLATFORMS = [
   {
-    title: 'New business launches',
-    body: 'A professional website that establishes credibility from the first visit.',
+    title: 'Auditing',
+    body: 'A full review of an existing site and server, with a clear list of what to fix.',
   },
   {
-    title: 'Product catalogs',
-    body: 'A website built around a product catalog, with browsing, ordering, and payment gateway integration.',
+    title: 'Building',
+    body: 'A custom website built from the ground up, around a specific business.',
   },
   {
-    title: 'An existing site that needs a check-up',
-    body: 'A full audit of site performance, functionality, and setup, with a clear list of what to fix.',
+    title: 'Customizing',
+    body: 'Branding, features, and functionality tailored to the business.',
   },
   {
-    title: 'Booking & customer systems',
-    body: 'Direct booking, ordering, or service requests, without manual coordination.',
+    title: 'Deploying',
+    body: 'Domain, hosting, and everything required to take a finished site live.',
   },
   {
-    title: 'Operations management',
-    body: 'Staff access, inventory, and order tracking built around a specific business process.',
-  },
-  {
-    title: 'Schools & organizations',
-    body: 'Member and student systems with defined access levels for administrators, staff, and end users.',
-  },
-  {
-    title: 'Website management',
-    body: 'Ongoing updates and content changes for a website already in place.',
+    title: 'Managing',
+    body: 'Ongoing updates and maintenance for a website already in place.',
   },
 ];
 
@@ -41,12 +33,11 @@ export default function Home() {
           <div className="hero__copy">
             <p className="eyebrow">Kismet Code Digital</p>
             <h1 className="hero__headline">
-              Custom software for growing businesses.
+              Custom websites for growing businesses.
             </h1>
             <p className="hero__sub">
-              Websites, product catalogs, and business management systems,
-              engineered end to end for organizations that need
-              software built around their actual operations.
+              Every project moves through the same five stages: audited,
+              built, customized, deployed, and managed, end to end.
             </p>
             <div className="hero__actions">
               <Link to="/contact" className="btn btn--primary">
@@ -88,9 +79,9 @@ export default function Home() {
       </section>
 
       <section className="container platforms-section">
-        <p className="eyebrow">Platform types</p>
+        <p className="eyebrow">The process</p>
         <h2 className="platforms-section__title">
-          Software built for a specific stage of business.
+          Five stages, one website, start to finish.
         </h2>
 
         <div className="platforms-grid">
