@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceModal from '../components/ServiceModal';
+import AlienNode from '../components/AlienNode';
 import './Services.css';
 
 const CORE = [
@@ -80,19 +81,18 @@ export default function Services() {
         </p>
       </section>
 
-      <section className="container services-grid">
-        {CORE.map((service) => (
-          <button
-            className="service-card"
-            key={service.title}
-            onClick={() => setActiveService(service)}
-          >
-            <div className="service-card__mark" />
-            <h3>{service.title}</h3>
-            <p>{service.body}</p>
-            <span className="service-card__more">View details →</span>
-          </button>
-        ))}
+      <section className="container services-field-section">
+        <div className="services-field">
+          {CORE.map((service, i) => (
+            <button
+              key={service.title}
+              className={`services-field__node services-field__node--${i + 1}`}
+              onClick={() => setActiveService(service)}
+            >
+              <AlienNode title={service.title} body={service.body} glowColor="#22d3ee" />
+            </button>
+          ))}
+        </div>
       </section>
 
       <section className="container services-cta">
