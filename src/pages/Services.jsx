@@ -5,67 +5,55 @@ import './Services.css';
 
 const CORE = [
   {
-    title: 'Websites',
-    body: 'A professional website, built around a specific business, including a full product catalog where needed.',
+    title: 'Auditing',
+    body: 'A full review of an existing website and the server it runs on, covering performance, setup, and security.',
     detail:
-      'A website establishes an online presence and can include a complete product catalog, allowing customers to browse and place orders directly. Payment gateway integration is set up as part of the build, connecting to a payment processor such as Stripe. A business bank account and merchant processor relationship is arranged directly between the business and its bank, and is required before payment integration can be completed.',
+      'An audit examines a site from two directions: how it performs (page speed, mobile-friendliness, broken links, basic search visibility) and how the underlying server and hosting are configured (domain setup, security, and whether everything is running the way it should). The result is a clear report of what is working, what needs attention, and what to prioritize.',
     capabilities: [
-      'Product catalogs with categories, search, and filtering',
-      'Payment gateway integration (Stripe or equivalent)',
-      'Order confirmation and status updates',
+      'Page speed and mobile-responsiveness review',
+      'Broken link and basic SEO check',
+      'Server, hosting, and domain configuration review',
+      'A prioritized list of recommended fixes',
+    ],
+  },
+  {
+    title: 'Building',
+    body: 'A custom website built from the ground up, structured around a specific business rather than a template.',
+    detail:
+      'This is the initial build: structure, pages, and core functionality, designed around what the business actually needs rather than adapted from a generic template. This includes systems for managing incoming client requests and a portal experience for clients to interact with, where the project calls for it.',
+    capabilities: [
+      'Custom site structure and page architecture',
+      'Client intake and request-handling forms',
+      'Client-facing portal experiences where needed',
       'Mobile-responsive design across all devices',
     ],
   },
   {
-    title: 'Business management software',
-    body: 'Inventory, orders, staff roles, and daily operations, replacing manual tracking with a dedicated system.',
+    title: 'Customizing',
+    body: 'Branding, features, and functionality tailored specifically to the business, on a new build or an existing one.',
     detail:
-      'Many businesses reach a point where spreadsheets and manual processes no longer scale. This service replaces that manual layer with software designed around the actual workflow, including staff permissions, reporting, and audit history.',
+      'Once the core structure exists, this service shapes it around the specific business: brand colors and typography, feature additions, and adjustments that make a site feel built for one business rather than assembled from parts.',
     capabilities: [
-      'Staff accounts with role-based access',
-      'Inventory and stock level tracking',
-      'Order and task management dashboards',
-      'Activity logs for accountability',
+      'Brand-specific design and styling',
+      'Feature additions and adjustments',
+      'Content structure tailored to the business',
+      'Integration with existing tools or systems',
     ],
   },
   {
-    title: 'Booking & customer systems',
-    body: 'Direct booking, ordering, or service requests, without manual coordination.',
+    title: 'Deploying',
+    body: 'Taking a finished site live, including domain, hosting, and everything required to get it on the internet.',
     detail:
-      'This service covers systems where customers interact directly, such as scheduling an appointment, placing an order, or submitting a request, with automatic confirmation and status tracking on both sides.',
+      'A finished website still needs to actually go live: registering or connecting a domain, setting up hosting, and configuring everything required for the site to be reachable, secure, and stable from day one.',
     capabilities: [
-      'Calendar and appointment scheduling',
-      'Automated confirmation notifications',
-      'Customer-facing status tracking',
-      'Admin dashboard for managing requests',
+      'Domain registration and DNS configuration',
+      'Hosting setup and deployment',
+      'SSL and security configuration',
+      'Launch-day checks before going live',
     ],
   },
   {
-    title: 'School & organization platforms',
-    body: 'Member, student, or staff systems with defined access for administrators, staff, and end users.',
-    detail:
-      'Institutions such as schools, churches, and membership organizations require systems where different user types see different information. This service builds that structure with proper access control from the start.',
-    capabilities: [
-      'Role-based portals for administrators, staff, and members',
-      'Secure authentication per user type',
-      'Record-keeping with audit history',
-      'Reporting dashboards for oversight',
-    ],
-  },
-  {
-    title: 'Backend & cloud architecture',
-    body: 'Secure authentication, databases, and the infrastructure operating behind the visible product.',
-    detail:
-      'Every system above depends on infrastructure that is rarely seen but critical: how data is stored, how access is secured, and how the system holds up under real usage. This service covers that layer directly.',
-    capabilities: [
-      'Authentication and permission systems',
-      'Database design and data modeling',
-      'Cloud hosting and scaling configuration',
-      'Security review of existing systems',
-    ],
-  },
-  {
-    title: 'Website management',
+    title: 'Managing',
     body: 'Ongoing updates, content changes, and maintenance for a website already in place.',
     detail:
       'Once a website launches, it requires periodic updates: new content, product changes, seasonal promotions, or general maintenance. This service covers ongoing management, so changes are handled without requiring in-house technical staff.',
@@ -84,11 +72,11 @@ export default function Services() {
   return (
     <div className="services-page">
       <section className="page-hero container">
-        <p className="eyebrow">Services</p>
-        <h1 className="page-hero__title">A defined scope of work.</h1>
+        <p className="eyebrow">What we build</p>
+        <h1 className="page-hero__title">Five stages, one website.</h1>
         <p className="page-hero__sub">
-          Each service below can be scoped independently or combined
-          into a single project.
+          Every project moves through the same process, and each stage
+          can be scoped on its own or as part of a full build.
         </p>
       </section>
 
@@ -108,7 +96,7 @@ export default function Services() {
       </section>
 
       <section className="container services-cta">
-        <h2>Uncertain which service applies?</h2>
+        <h2>Uncertain which stage applies?</h2>
         <p>A brief consultation determines the right scope, at no obligation.</p>
         <Link to="/contact" className="btn btn--primary">
           Request a quote

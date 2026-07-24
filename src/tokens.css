@@ -1,22 +1,22 @@
 /* ============================================
-   KISMET CODE DIGITAL — DESIGN TOKENS (v2)
-   Light, AI-forward: near-white base, violet/cyan
-   signal accents, geometric type. Services-led,
-   not portfolio-led.
+   KISMET CODE DIGITAL — DESIGN TOKENS (v3)
+   Dark enterprise theme: charcoal-navy base,
+   electric blue + emerald accents.
    ============================================ */
 
 :root {
   /* Color */
-  --ink: #0b0f1a;             /* primary text */
-  --slate: #5b6472;           /* secondary text */
-  --bg: #fafbfe;              /* page background — cool near-white */
-  --bg-dim: #f1f2fa;          /* card/section background */
-  --line: rgba(11, 15, 26, 0.09);
-  --line-strong: rgba(11, 15, 26, 0.18);
+  --bg: #0a0e14;               /* page background — near-black charcoal-navy */
+  --bg-raised: #131922;        /* cards, sections lifted above base */
+  --bg-raised-2: #1a212c;      /* hover states, slightly higher still */
+  --ink: #f5f7fa;              /* primary text */
+  --slate: #8b95a5;            /* secondary text */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
 
-  --violet: #6d5ce8;          /* primary accent — the "AI" signal color */
-  --cyan: #2fd4c4;            /* secondary accent, used in glow/gradient */
-  --signal-gradient: linear-gradient(135deg, #6d5ce8 0%, #2fd4c4 100%);
+  --blue: #2f7dfa;             /* primary accent — electric blue */
+  --emerald: #16c98d;          /* secondary accent — emerald green */
+  --signal-gradient: linear-gradient(135deg, #2f7dfa 0%, #16c98d 100%);
 
   /* Typography */
   --font-display: 'Space Grotesk', 'Inter', sans-serif;

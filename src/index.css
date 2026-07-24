@@ -49,7 +49,7 @@ img {
 }
 
 :focus-visible {
-  outline: 2px solid var(--violet);
+  outline: 2px solid var(--blue);
   outline-offset: 3px;
 }
 

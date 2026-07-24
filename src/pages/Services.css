@@ -18,14 +18,14 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-3);
   margin-bottom: var(--space-6);
 }
 
 .service-card {
   text-align: left;
-  background: white;
+  background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: var(--space-4);
@@ -36,9 +36,9 @@
 }
 
 .service-card:hover {
-  border-color: transparent;
+  border-color: var(--blue);
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px -12px rgba(109, 92, 232, 0.2);
+  box-shadow: 0 16px 40px -12px rgba(47, 125, 250, 0.25);
 }
 
 .service-card__mark {
@@ -64,7 +64,7 @@
   margin-top: var(--space-3);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--violet);
+  color: var(--blue);
 }
 
 .services-cta {
@@ -81,10 +81,4 @@
   color: var(--slate);
   margin-top: var(--space-2);
   margin-bottom: var(--space-4);
-}
-
-@media (max-width: 720px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
 }

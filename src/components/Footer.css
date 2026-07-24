@@ -1,6 +1,8 @@
 .footer {
   margin-top: var(--space-7);
   padding-bottom: var(--space-3);
+  background: var(--bg-raised);
+  border-top: 1px solid var(--line);
 }
 
 .footer__inner {
@@ -29,7 +31,7 @@
 .footer__name {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  color: var(--ink-navy);
+  color: var(--ink);
 }
 
 .footer__tagline {
@@ -61,7 +63,7 @@
 }
 
 .footer__col a:hover {
-  color: var(--copper);
+  color: var(--emerald);
 }
 
 .footer__copyright {

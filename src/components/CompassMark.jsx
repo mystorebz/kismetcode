@@ -1,32 +1,33 @@
-// The signature element: a thin-line compass rose with a key at its
-// center, echoing the logo's core symbolism (guidance + unlocking)
-// without reusing the logo file itself. Used sparingly — hero and
-// as a marker before each case study.
+// Signature element: a thin-line compass rose echoing the logo's
+// cardinal points and center mark, refined for the dark theme.
+// Used once in the hero, and as a small static node marker elsewhere.
 
-export default function CompassMark({ size = 64, className = '', settle = false }) {
+export default function CompassMark({ size = 56, className = '' }) {
   return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 100 100"
       fill="none"
-      className={`${className} ${settle ? 'compass-mark--settle' : ''}`}
+      className={className}
       aria-hidden="true"
     >
-      <circle cx="50" cy="50" r="46" stroke="var(--gold)" strokeWidth="1" opacity="0.55" />
-      <circle cx="50" cy="50" r="34" stroke="var(--ink-navy)" strokeWidth="0.75" opacity="0.4" />
+      <circle cx="50" cy="50" r="46" stroke="url(#compassRing)" strokeWidth="1" opacity="0.6" />
+      <circle cx="50" cy="50" r="30" stroke="var(--slate)" strokeWidth="0.5" opacity="0.35" />
 
-      {/* cardinal points */}
-      <path d="M50 6 L54 26 L50 22 L46 26 Z" fill="var(--ink-navy)" />
-      <path d="M50 94 L54 74 L50 78 L46 74 Z" fill="var(--ink-navy)" opacity="0.65" />
-      <path d="M6 50 L26 46 L22 50 L26 54 Z" fill="var(--gold)" opacity="0.75" />
-      <path d="M94 50 L74 46 L78 50 L74 54 Z" fill="var(--gold)" opacity="0.75" />
+      <path d="M50 6 L54 26 L50 22 L46 26 Z" fill="var(--blue)" />
+      <path d="M50 94 L54 74 L50 78 L46 74 Z" fill="var(--slate)" opacity="0.5" />
+      <path d="M6 50 L26 46 L22 50 L26 54 Z" fill="var(--emerald)" opacity="0.85" />
+      <path d="M94 50 L74 46 L78 50 L74 54 Z" fill="var(--emerald)" opacity="0.85" />
 
-      {/* key at center */}
-      <circle cx="50" cy="42" r="6" stroke="var(--copper)" strokeWidth="2" />
-      <line x1="50" y1="48" x2="50" y2="66" stroke="var(--copper)" strokeWidth="2" />
-      <line x1="50" y1="58" x2="57" y2="58" stroke="var(--copper)" strokeWidth="2" />
-      <line x1="50" y1="64" x2="55" y2="64" stroke="var(--copper)" strokeWidth="2" />
+      <circle cx="50" cy="50" r="4" fill="var(--ink)" />
+
+      <defs>
+        <linearGradient id="compassRing" x1="0" y1="0" x2="100" y2="100">
+          <stop offset="0%" stopColor="var(--blue)" />
+          <stop offset="100%" stopColor="var(--emerald)" />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }
