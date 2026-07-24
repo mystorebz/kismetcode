@@ -1,17 +1,79 @@
-// A single floating hexagonal node with a soft glow, used for the
-// five-stage process display. Built as HTML/CSS clip-path rather
-// than SVG so the hexagon and its text reflow responsively.
+.alien-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-export default function AlienNode({ title, body, glowColor, className = '' }) {
-  return (
-    <div className={`alien-node ${className}`} style={{ '--node-glow': glowColor }}>
-      <div className="alien-node__glow" aria-hidden="true" />
-      <div className="alien-node__hex">
-        <div className="alien-node__content">
-          <h3>{title}</h3>
-          <p>{body}</p>
-        </div>
-      </div>
-    </div>
-  );
+.alien-node__glow {
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(circle, var(--node-glow) 0%, transparent 68%);
+  opacity: 0.35;
+  filter: blur(8px);
+  pointer-events: none;
+  animation: pulse 5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.42; }
+}
+
+.alien-node__hex {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  min-width: 200px;
+  max-width: 260px;
+  background: #0d1218;
+  border: 1.5px solid transparent;
+  background-image:
+    linear-gradient(#0d1218, #0d1218),
+    linear-gradient(135deg, var(--node-glow), transparent 70%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  transition: transform 0.3s var(--ease-settle);
+}
+
+.alien-node:hover .alien-node__hex {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.alien-node__content {
+  text-align: center;
+  max-width: 78%;
+}
+
+.alien-node__content h3 {
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.alien-node__content p {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .alien-node__hex {
+    min-width: 170px;
+    padding: var(--space-2);
+  }
+  .alien-node__content h3 {
+    font-size: 1.05rem;
+  }
+  .alien-node__content p {
+    font-size: 0.8rem;
+  }
 }

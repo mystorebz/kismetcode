@@ -21,8 +21,10 @@
 }
 
 .contact-intro h1 {
-  font-size: var(--type-h1);
-  margin-top: var(--space-2);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-top: var(--space-3);
+  letter-spacing: -0.02em;
 }
 
 .contact-sub {

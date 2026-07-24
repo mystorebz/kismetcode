@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import CompassMark from '../components/CompassMark';
 import AlienNode from '../components/AlienNode';
 import logo from '../assets/logo.png';
 import './Home.css';
@@ -39,7 +38,6 @@ export default function Home() {
         <div className="hero__glow" aria-hidden="true" />
         <img src={logo} alt="" className="hero__watermark" aria-hidden="true" />
         <div className="container hero__inner">
-          <CompassMark size={56} className="hero__mark" />
           <p className="eyebrow">Kismet Code Digital</p>
           <h1 className="hero__headline">
             Enterprise-grade websites,<br />built in Belize.

@@ -2,6 +2,8 @@
 // five-stage process display. Built as HTML/CSS clip-path rather
 // than SVG so the hexagon and its text reflow responsively.
 
+import './AlienNode.css';
+
 export default function AlienNode({ title, body, glowColor, className = '' }) {
   return (
     <div className={`alien-node ${className}`} style={{ '--node-glow': glowColor }}>

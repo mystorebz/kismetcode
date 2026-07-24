@@ -45,10 +45,10 @@ export default function Contact() {
           className="contact-intro__node"
         />
         <p className="eyebrow">Request a quote</p>
-        <h1>Project inquiries.</h1>
+        <h1>Start your project.</h1>
         <p className="contact-sub">
-          A brief description of the project below results in a
-          straightforward quote, typically within one business day.
+          Tell us about the business and the idea. A straightforward
+          quote follows within one business day.
         </p>
         <a href="mailto:info@kismetcodedigital.com" className="contact-email">
           info@kismetcodedigital.com
