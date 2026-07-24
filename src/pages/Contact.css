@@ -85,20 +85,6 @@
   padding: var(--space-3) 0;
 }
 
-.contact-error {
-  font-size: 0.875rem;
-  color: #c0392b;
-  background: #fdecea;
-  border: 1px solid #f5c6c0;
-  border-radius: var(--radius-sm);
-  padding: 0.7rem 0.85rem;
-}
-
-.contact-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 @media (max-width: 780px) {
   .contact-grid {
     grid-template-columns: 1fr;
