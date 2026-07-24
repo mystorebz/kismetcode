@@ -17,6 +17,19 @@
   z-index: 0;
 }
 
+.hero__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  max-width: none;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(0.4) brightness(1.8);
+}
+
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -89,45 +102,28 @@
   max-width: 640px;
 }
 
-.platforms-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: var(--space-3);
+.platforms-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-4) var(--space-3);
+  margin-top: var(--space-6);
+  padding: var(--space-4) 0;
+}
+
+.platforms-field__node {
+  flex: 1 1 220px;
+  max-width: 260px;
+}
+
+.platforms-field__node--2,
+.platforms-field__node--4 {
   margin-top: var(--space-5);
 }
 
-.platform-card {
-  padding: var(--space-4);
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  min-width: 0;
-}
-
-.platform-card:hover {
-  border-color: var(--blue);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px -12px rgba(47, 125, 250, 0.28);
-}
-
-.platform-card__mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--signal-gradient);
-  margin-bottom: var(--space-3);
-}
-
-.platform-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: var(--space-2);
-}
-
-.platform-card p {
-  font-size: 0.9375rem;
-  color: var(--slate);
-  line-height: 1.65;
+.platforms-field__node--3 {
+  margin-top: calc(var(--space-5) * -0.4);
 }
 
 .cta-band {
@@ -175,6 +171,10 @@
     height: 400px;
   }
 
+  .hero__watermark {
+    width: 600px;
+  }
+
   .hero__actions {
     flex-wrap: wrap;
     width: 100%;
@@ -185,8 +185,10 @@
     text-align: center;
   }
 
-  .platform-card {
-    padding: var(--space-3);
+  .platforms-field__node--2,
+  .platforms-field__node--3,
+  .platforms-field__node--4 {
+    margin-top: 0;
   }
 
   .cta-band__inner {

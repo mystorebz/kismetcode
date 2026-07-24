@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceModal from '../components/ServiceModal';
+import logo from '../assets/logo.png';
 import './Services.css';
 
 const CORE = [
@@ -71,6 +72,8 @@ export default function Services() {
 
   return (
     <div className="services-page">
+      <img src={logo} alt="" className="services-watermark services-watermark--1" aria-hidden="true" />
+      <img src={logo} alt="" className="services-watermark services-watermark--2" aria-hidden="true" />
       <section className="page-hero container">
         <p className="eyebrow">What we build</p>
         <h1 className="page-hero__title">Five stages, one website.</h1>

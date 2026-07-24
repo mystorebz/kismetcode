@@ -1,4 +1,33 @@
+.services-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-watermark {
+  position: absolute;
+  width: 420px;
+  max-width: none;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(0.4) brightness(1.8);
+}
+
+.services-watermark--1 {
+  top: -60px;
+  right: -100px;
+  transform: rotate(12deg);
+}
+
+.services-watermark--2 {
+  bottom: -80px;
+  left: -120px;
+  transform: rotate(-18deg);
+}
+
 .page-hero {
+  position: relative;
+  z-index: 1;
   padding-top: var(--space-6);
   padding-bottom: var(--space-5);
   max-width: var(--content-width-narrow);
@@ -17,6 +46,8 @@
 }
 
 .services-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-3);
@@ -68,6 +99,8 @@
 }
 
 .services-cta {
+  position: relative;
+  z-index: 1;
   text-align: center;
   padding: var(--space-6) var(--space-3) var(--space-7);
   max-width: 520px;

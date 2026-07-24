@@ -1,27 +1,34 @@
 import { Link } from 'react-router-dom';
 import CompassMark from '../components/CompassMark';
+import AlienNode from '../components/AlienNode';
+import logo from '../assets/logo.png';
 import './Home.css';
 
 const PLATFORMS = [
   {
     title: 'Auditing',
     body: 'A full review of an existing site and server, with a clear list of what to fix.',
+    glow: '#2f7dfa',
   },
   {
     title: 'Building',
     body: 'A custom website built from the ground up, around a specific business.',
+    glow: '#16c98d',
   },
   {
     title: 'Customizing',
     body: 'Branding, features, and functionality tailored to the business.',
+    glow: '#2f7dfa',
   },
   {
     title: 'Deploying',
     body: 'Domain, hosting, and everything required to take a finished site live.',
+    glow: '#16c98d',
   },
   {
     title: 'Managing',
     body: 'Ongoing updates and maintenance for a website already in place.',
+    glow: '#2f7dfa',
   },
 ];
 
@@ -30,6 +37,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero__glow" aria-hidden="true" />
+        <img src={logo} alt="" className="hero__watermark" aria-hidden="true" />
         <div className="container hero__inner">
           <CompassMark size={56} className="hero__mark" />
           <p className="eyebrow">Kismet Code Digital</p>
@@ -58,13 +66,15 @@ export default function Home() {
           Five stages, one website, start to finish.
         </h2>
 
-        <div className="platforms-grid">
-          {PLATFORMS.map((platform) => (
-            <div className="platform-card" key={platform.title}>
-              <div className="platform-card__mark" />
-              <h3>{platform.title}</h3>
-              <p>{platform.body}</p>
-            </div>
+        <div className="platforms-field">
+          {PLATFORMS.map((platform, i) => (
+            <AlienNode
+              key={platform.title}
+              title={platform.title}
+              body={platform.body}
+              glowColor={platform.glow}
+              className={`platforms-field__node platforms-field__node--${i + 1}`}
+            />
           ))}
         </div>
       </section>
