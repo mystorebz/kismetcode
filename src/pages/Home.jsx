@@ -11,6 +11,10 @@ const PLATFORMS = [
     body: 'A website built around a product catalog, with browsing, ordering, and payment gateway integration.',
   },
   {
+    title: 'An existing site that needs a check-up',
+    body: 'A full audit of site performance, functionality, and setup, with a clear list of what to fix.',
+  },
+  {
     title: 'Booking & customer systems',
     body: 'Direct booking, ordering, or service requests, without manual coordination.',
   },
