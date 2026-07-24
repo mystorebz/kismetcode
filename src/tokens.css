@@ -1,35 +1,37 @@
 /* ============================================
-   KISMET CODE DIGITAL — DESIGN TOKENS
-   Pulled directly from the logo: navy compass,
-   gold knotwork, copper accents, warm parchment.
+   KISMET CODE DIGITAL — DESIGN TOKENS (v2)
+   Light, AI-forward: near-white base, violet/cyan
+   signal accents, geometric type. Services-led,
+   not portfolio-led.
    ============================================ */
 
 :root {
-  /* Color — named for what they are, not generic */
-  --ink-navy: #0f2438;       /* primary text, compass rings */
-  --slate: #3a5468;          /* secondary text */
-  --gold: #b98a3e;           /* primary accent — the knotwork gold */
-  --copper: #c26b3f;         /* secondary accent — warm highlight */
-  --parchment: #faf7f1;      /* page background, warm not stark */
-  --parchment-dim: #f2ecdf;  /* card / section background */
-  --near-black: #1a1712;     /* body copy, softer than pure black */
-  --line: rgba(15, 36, 56, 0.14); /* hairline rule color */
-  --line-strong: rgba(15, 36, 56, 0.28);
+  /* Color */
+  --ink: #0b0f1a;             /* primary text */
+  --slate: #5b6472;           /* secondary text */
+  --bg: #fafbfe;              /* page background — cool near-white */
+  --bg-dim: #f1f2fa;          /* card/section background */
+  --line: rgba(11, 15, 26, 0.09);
+  --line-strong: rgba(11, 15, 26, 0.18);
+
+  --violet: #6d5ce8;          /* primary accent — the "AI" signal color */
+  --cyan: #2fd4c4;            /* secondary accent, used in glow/gradient */
+  --signal-gradient: linear-gradient(135deg, #6d5ce8 0%, #2fd4c4 100%);
 
   /* Typography */
-  --font-display: 'Fraunces', 'Georgia', serif;
-  --font-body: 'Work Sans', -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
-  --type-hero: clamp(2.75rem, 6vw, 5rem);
-  --type-h1: clamp(2rem, 4vw, 3.25rem);
-  --type-h2: clamp(1.5rem, 2.6vw, 2.1rem);
-  --type-h3: 1.25rem;
+  --type-hero: clamp(2.75rem, 6vw, 4.75rem);
+  --type-h1: clamp(2rem, 4vw, 3rem);
+  --type-h2: clamp(1.4rem, 2.4vw, 1.9rem);
+  --type-h3: 1.2rem;
   --type-body: 1.0625rem;
   --type-small: 0.875rem;
   --type-eyebrow: 0.8125rem;
 
-  /* Spacing scale */
+  /* Spacing */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -41,9 +43,9 @@
   /* Layout */
   --content-width: 1120px;
   --content-width-narrow: 720px;
-  --radius: 3px; /* engraved, not rounded-app */
+  --radius: 12px;
+  --radius-sm: 6px;
 
-  /* Motion */
   --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
 }
 

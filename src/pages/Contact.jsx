@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import CompassMark from '../components/CompassMark';
 import './Contact.css';
 
 export default function Contact() {
@@ -7,9 +6,8 @@ export default function Contact() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Static-form note: wire this to Formspree, EmailJS, or a
-    // serverless function once hosted — same pattern as the
-    // EmailJS setup already used on ConnectUs.
+    // Wire this to Formspree, EmailJS, or a serverless function
+    // once hosted, so submissions arrive at an actual inbox.
     setSent(true);
   }
 
@@ -17,23 +15,21 @@ export default function Contact() {
     <div className="contact-page container">
       <div className="contact-grid">
         <div className="contact-intro">
-          <CompassMark size={48} />
-          <p className="eyebrow">Contact</p>
-          <h1>Tell me what you're building.</h1>
+          <p className="eyebrow">Request a quote</p>
+          <h1>Project inquiries.</h1>
           <p className="contact-sub">
-            A school system, a marketplace, an idea that doesn't have a
-            home yet — send the shape of it and I'll tell you honestly
-            what it takes.
+            A brief description of the project below results in a
+            straightforward quote, typically within one business day.
           </p>
-          <a href="mailto:hello@kismetcodedigital.com" className="contact-email">
-            hello@kismetcodedigital.com
+          <a href="mailto:info@kismetcodedigital.com" className="contact-email">
+            info@kismetcodedigital.com
           </a>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
           {sent ? (
             <p className="contact-success">
-              Sent. I'll get back to you directly at the email you gave.
+              Inquiry received. A response will follow at the email address provided.
             </p>
           ) : (
             <>
@@ -46,11 +42,37 @@ export default function Contact() {
                 <input type="email" name="email" required />
               </label>
               <label>
-                What are you building?
-                <textarea name="message" rows="5" required />
+                Phone number
+                <input type="tel" name="phone" required />
+              </label>
+              <label>
+                Project type
+                <select name="projectType" required defaultValue="">
+                  <option value="" disabled>Select an option</option>
+                  <option value="new-website">A new website</option>
+                  <option value="online-store">An online store</option>
+                  <option value="booking-system">A booking or ordering system</option>
+                  <option value="business-software">Business management software</option>
+                  <option value="fix-existing">An existing site or system</option>
+                  <option value="not-sure">Undetermined</option>
+                </select>
+              </label>
+              <label>
+                Estimated budget
+                <select name="budget" required defaultValue="">
+                  <option value="" disabled>Select a range</option>
+                  <option value="under-500">Under $500</option>
+                  <option value="500-1500">$500 to $1,500</option>
+                  <option value="1500-5000">$1,500 to $5,000</option>
+                  <option value="not-sure">Undetermined</option>
+                </select>
+              </label>
+              <label>
+                Project description
+                <textarea name="message" rows="4" placeholder="A brief description of the business and the intended outcome." required />
               </label>
               <button type="submit" className="btn btn--primary">
-                Send
+                Submit inquiry
               </button>
             </>
           )}

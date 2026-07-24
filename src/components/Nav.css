@@ -2,8 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 247, 241, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(250, 251, 254, 0.85);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -22,23 +22,17 @@
 }
 
 .nav__logo {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
 }
 
 .nav__wordmark {
   font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--ink-navy);
-  letter-spacing: 0.01em;
-}
-
-.nav__wordmark em {
-  font-style: italic;
-  color: var(--slate);
-  font-weight: 400;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
 .nav__links {
@@ -61,8 +55,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1px;
-  background: var(--gold);
+  height: 2px;
+  background: var(--signal-gradient);
+  border-radius: 2px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s var(--ease-settle);
@@ -70,7 +65,7 @@
 
 .nav__link:hover,
 .nav__link--active {
-  color: var(--ink-navy);
+  color: var(--ink);
 }
 
 .nav__link:hover::after,
@@ -81,15 +76,16 @@
 .nav__cta {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--parchment);
-  background: var(--ink-navy);
-  padding: 0.55rem 1.1rem;
-  border-radius: var(--radius);
-  transition: background 0.2s ease;
+  color: white;
+  background: var(--signal-gradient);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .nav__cta:hover {
-  background: var(--copper);
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 720px) {

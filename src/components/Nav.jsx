@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 import './Nav.css';
 
 const LINKS = [
-  { to: '/work', label: 'Work' },
+  { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
   { to: '/about', label: 'About' },
 ];
@@ -16,9 +16,7 @@ export default function Nav() {
       <div className="container nav__inner">
         <Link to="/" className="nav__brand">
           <img src={logo} alt="Kismet Code Digital" className="nav__logo" />
-          <span className="nav__wordmark">
-            Kismet Code <em>Digital</em>
-          </span>
+          <span className="nav__wordmark">Kismet Code Digital</span>
         </Link>
 
         <nav className="nav__links" aria-label="Primary">
@@ -36,7 +34,7 @@ export default function Nav() {
             </Link>
           ))}
           <Link to="/contact" className="nav__cta">
-            Get in touch
+            Start a project
           </Link>
         </nav>
       </div>

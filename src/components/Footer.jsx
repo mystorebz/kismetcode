@@ -18,17 +18,15 @@ export default function Footer() {
         <div className="footer__cols">
           <div className="footer__col">
             <p className="eyebrow">Site</p>
-            <Link to="/work">Work</Link>
             <Link to="/services">Services</Link>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
           </div>
           <div className="footer__col">
             <p className="eyebrow">Direct</p>
-            <a href="mailto:hello@kismetcodedigital.com">
-              hello@kismetcodedigital.com
+            <a href="mailto:info@kismetcodedigital.com">
+              info@kismetcodedigital.com
             </a>
-            <span className="footer__location">Belize</span>
           </div>
         </div>
       </div>

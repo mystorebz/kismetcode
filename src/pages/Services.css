@@ -1,15 +1,52 @@
+.page-hero {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-5);
+  max-width: var(--content-width-narrow);
+}
+
+.page-hero__title {
+  font-size: var(--type-h1);
+  margin-top: var(--space-2);
+}
+
+.page-hero__sub {
+  font-size: 1.05rem;
+  color: var(--slate);
+  margin-top: var(--space-3);
+  max-width: 520px;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+  gap: var(--space-3);
   margin-bottom: var(--space-6);
 }
 
 .service-card {
-  background: var(--parchment);
+  text-align: left;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   padding: var(--space-4);
+  font-family: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(109, 92, 232, 0.2);
+}
+
+.service-card__mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--signal-gradient);
+  margin-bottom: var(--space-3);
 }
 
 .service-card h3 {
@@ -23,21 +60,11 @@
   line-height: 1.6;
 }
 
-.extends {
-  padding-bottom: var(--space-6);
-}
-
-.extends__inner {
-  padding-top: var(--space-4);
-  max-width: var(--content-width-narrow);
-}
-
-.extends__body {
-  font-size: 1.05rem;
-  color: var(--near-black);
-  margin-top: var(--space-2);
-  line-height: 1.65;
-  font-family: var(--font-display);
+.service-card__more {
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--violet);
 }
 
 .services-cta {
