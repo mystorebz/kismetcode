@@ -247,4 +247,41 @@
   .platforms-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero {
+    padding: var(--space-5) 0 var(--space-4);
+  }
+
+  .hero__glow {
+    width: 380px;
+    height: 380px;
+    top: -15%;
+    right: -20%;
+  }
+
+  .hero__actions {
+    flex-wrap: wrap;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero__panel {
+    height: 260px;
+  }
+
+  .panel-card--small {
+    right: 0;
+    width: 72%;
+  }
+
+  .platform-card {
+    padding: var(--space-3);
+  }
+
+  .cta-band__inner {
+    padding: 0 var(--space-2);
+  }
 }
