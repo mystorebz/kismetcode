@@ -17,10 +17,22 @@ const CORE = [
     ],
   },
   {
-    title: 'Business management software',
+    title: 'Website auditing',
+    body: 'A full review of an existing website, covering both technical health and day-to-day functionality.',
+    detail:
+      'A website audit examines a site from two directions: how it performs (page speed, mobile-friendliness, broken links, basic search visibility) and whether it is working the way it should day to day (correct hosting and domain setup, security, forms and features functioning as intended). The result is a clear report of what is working, what needs attention, and what to prioritize.',
+    capabilities: [
+      'Page speed and mobile-responsiveness review',
+      'Broken link and basic SEO check',
+      'Hosting, domain, and security configuration review',
+      'A prioritized list of recommended fixes',
+    ],
+  },
+  {
+    title: 'Business management systems',
     body: 'Inventory, orders, staff roles, and daily operations, replacing manual tracking with a dedicated system.',
     detail:
-      'Many businesses reach a point where spreadsheets and manual processes no longer scale. This service replaces that manual layer with software designed around the actual workflow, including staff permissions, reporting, and audit history.',
+      'Many businesses reach a point where spreadsheets and manual processes no longer scale. This service replaces that manual layer with a system designed around the actual workflow, including staff permissions, reporting, and audit history.',
     capabilities: [
       'Staff accounts with role-based access',
       'Inventory and stock level tracking',
@@ -41,7 +53,7 @@ const CORE = [
     ],
   },
   {
-    title: 'School & organization platforms',
+    title: 'School & organization systems',
     body: 'Member, student, or staff systems with defined access for administrators, staff, and end users.',
     detail:
       'Institutions such as schools, churches, and membership organizations require systems where different user types see different information. This service builds that structure with proper access control from the start.',
@@ -50,18 +62,6 @@ const CORE = [
       'Secure authentication per user type',
       'Record-keeping with audit history',
       'Reporting dashboards for oversight',
-    ],
-  },
-  {
-    title: 'Backend & cloud architecture',
-    body: 'Secure authentication, databases, and the infrastructure operating behind the visible product.',
-    detail:
-      'Every system above depends on infrastructure that is rarely seen but critical: how data is stored, how access is secured, and how the system holds up under real usage. This service covers that layer directly.',
-    capabilities: [
-      'Authentication and permission systems',
-      'Database design and data modeling',
-      'Cloud hosting and scaling configuration',
-      'Security review of existing systems',
     ],
   },
   {
@@ -74,6 +74,18 @@ const CORE = [
       'Routine maintenance and monitoring',
       'Minor design and layout adjustments',
       'Scheduled or on-demand update requests',
+    ],
+  },
+  {
+    title: 'Backend & cloud architecture',
+    body: 'Secure authentication, databases, and the infrastructure operating behind the visible product.',
+    detail:
+      'Every system above depends on infrastructure that is rarely seen but critical: how data is stored, how access is secured, and how the system holds up under real usage. This service covers that layer directly.',
+    capabilities: [
+      'Authentication and permission systems',
+      'Database design and data modeling',
+      'Cloud hosting and scaling configuration',
+      'Security review of existing systems',
     ],
   },
 ];
