@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="What Kismet Code Digital builds: auditing, building, customizing, deploying, and managing custom websites and business systems." />
+  <title>Services — Kismet Code Digital</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/index.html" class="nav__brand">
+        <img src="/assets/images/logo.png" alt="Kismet Code Digital" class="nav__logo" />
+        <span class="nav__wordmark">Kismet Code Digital</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/index.html" class="nav__link">Home</a>
+        <a href="/services.html" class="nav__link nav__link--active">Services</a>
+        <a href="/about.html" class="nav__link">About</a>
+        <a href="/contact.html" class="nav__cta">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="services-page">
+      <section class="page-hero container">
+        <p class="eyebrow">What we build</p>
+        <h1 class="page-hero__title">Five stages, one website.</h1>
+        <p class="page-hero__sub">
+          Every project moves through the same process, and each stage
+          can be scoped on its own or as part of a full build.
+        </p>
+      </section>
+
+      <section class="container services-field-section">
+        <div class="services-field">
+          <button class="services-field__node services-field__node--1" data-service-key="auditing">
+            <div class="alien-node" style="--node-glow:#22d3ee">
+              <div class="alien-node__hex">
+                <div class="alien-node__content">
+                  <h3>Auditing</h3>
+                  <p>A full review of an existing website and the server it runs on, covering performance, setup, and security.</p>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="services-field__node services-field__node--2" data-service-key="building">
+            <div class="alien-node" style="--node-glow:#22d3ee">
+              <div class="alien-node__hex">
+                <div class="alien-node__content">
+                  <h3>Building</h3>
+                  <p>A custom website built from the ground up, structured around a specific business rather than a template.</p>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="services-field__node services-field__node--3" data-service-key="customizing">
+            <div class="alien-node" style="--node-glow:#22d3ee">
+              <div class="alien-node__hex">
+                <div class="alien-node__content">
+                  <h3>Customizing</h3>
+                  <p>Branding, features, and functionality tailored specifically to the business, on a new build or an existing one.</p>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="services-field__node services-field__node--4" data-service-key="deploying">
+            <div class="alien-node" style="--node-glow:#22d3ee">
+              <div class="alien-node__hex">
+                <div class="alien-node__content">
+                  <h3>Deploying</h3>
+                  <p>Taking a finished site live, including domain, hosting, and everything required to get it on the internet.</p>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="services-field__node services-field__node--5" data-service-key="managing">
+            <div class="alien-node" style="--node-glow:#22d3ee">
+              <div class="alien-node__hex">
+                <div class="alien-node__content">
+                  <h3>Managing</h3>
+                  <p>Ongoing updates, content changes, and maintenance for a website already in place.</p>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section class="container services-cta">
+        <h2>Uncertain which stage applies?</h2>
+        <p>A brief consultation determines the right scope, at no obligation.</p>
+        <a href="/contact.html" class="btn btn--primary">Request a quote</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <hr class="hairline" />
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="/assets/images/logo.png" alt="" class="footer__logo" />
+        <div>
+          <p class="footer__name">Kismet Code Digital</p>
+          <p class="footer__tagline">Software, built with intention.</p>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <p class="eyebrow">Site</p>
+          <a href="/services.html">Services</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <p class="eyebrow">Direct</p>
+          <a href="mailto:info@kismetcodedigital.com">info@kismetcodedigital.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p class="footer__copyright">&copy; 2026 Kismet Code Digital. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="service-modal">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div class="modal-mark"></div>
+      <h2 id="modal-title"></h2>
+      <p class="modal-body" id="modal-body"></p>
+      <h3 class="modal-subhead">Typical capabilities</h3>
+      <ul class="modal-list" id="modal-list"></ul>
+      <a href="/contact.html" class="btn btn--primary modal-cta">Request a quote</a>
+    </div>
+  </div>
+
+  <script src="/assets/js/script.js"></script>
+</body>
+</html>

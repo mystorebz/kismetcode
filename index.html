@@ -1,15 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Kismet Code Digital — custom multi-portal web applications for schools, marketplaces, and growing organizations, built by a solo developer in Belize." />
-    <title>Kismet Code Digital</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kismet Code Digital — custom websites and business systems, engineered end to end for companies that need something built around how they actually operate. Built in Belize." />
+  <title>Kismet Code Digital</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/index.html" class="nav__brand">
+        <img src="/assets/images/logo.png" alt="Kismet Code Digital" class="nav__logo" />
+        <span class="nav__wordmark">Kismet Code Digital</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/index.html" class="nav__link nav__link--active">Home</a>
+        <a href="/services.html" class="nav__link">Services</a>
+        <a href="/about.html" class="nav__link">About</a>
+        <a href="/contact.html" class="nav__cta">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="/assets/images/logo.png" alt="" class="hero__watermark" aria-hidden="true" />
+      <div class="container hero__inner">
+        <p class="eyebrow">Kismet Code Digital</p>
+        <h1 class="hero__headline">Enterprise-grade websites,<br />built in Belize.</h1>
+        <p class="hero__sub">
+          Custom websites and business systems engineered end to
+          end, for companies that need something built around how
+          they actually operate.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact.html" class="btn btn--primary">Request a quote</a>
+          <a href="/services.html" class="btn btn--ghost">What we build</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container platforms-section">
+      <p class="eyebrow">The process</p>
+      <h2 class="platforms-section__title">Five stages, one website, start to finish.</h2>
+
+      <div class="platforms-field">
+        <div class="alien-node platforms-field__node platforms-field__node--1" style="--node-glow:#2f7dfa">
+          <div class="alien-node__hex">
+            <div class="alien-node__content">
+              <h3>Auditing</h3>
+              <p>A full review of an existing site and server, with a clear list of what to fix.</p>
+            </div>
+          </div>
+        </div>
+        <div class="alien-node platforms-field__node platforms-field__node--2" style="--node-glow:#16c98d">
+          <div class="alien-node__hex">
+            <div class="alien-node__content">
+              <h3>Building</h3>
+              <p>A custom website built from the ground up, around a specific business.</p>
+            </div>
+          </div>
+        </div>
+        <div class="alien-node platforms-field__node platforms-field__node--3" style="--node-glow:#2f7dfa">
+          <div class="alien-node__hex">
+            <div class="alien-node__content">
+              <h3>Customizing</h3>
+              <p>Branding, features, and functionality tailored to the business.</p>
+            </div>
+          </div>
+        </div>
+        <div class="alien-node platforms-field__node platforms-field__node--4" style="--node-glow:#16c98d">
+          <div class="alien-node__hex">
+            <div class="alien-node__content">
+              <h3>Deploying</h3>
+              <p>Domain, hosting, and everything required to take a finished site live.</p>
+            </div>
+          </div>
+        </div>
+        <div class="alien-node platforms-field__node platforms-field__node--5" style="--node-glow:#2f7dfa">
+          <div class="alien-node__hex">
+            <div class="alien-node__content">
+              <h3>Managing</h3>
+              <p>Ongoing updates and maintenance for a website already in place.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-band__inner">
+        <h2>Every project starts with a conversation.</h2>
+        <p>A straightforward quote, with no obligation.</p>
+        <a href="/contact.html" class="btn btn--primary">Request a quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <hr class="hairline" />
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="/assets/images/logo.png" alt="" class="footer__logo" />
+        <div>
+          <p class="footer__name">Kismet Code Digital</p>
+          <p class="footer__tagline">Software, built with intention.</p>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <p class="eyebrow">Site</p>
+          <a href="/services.html">Services</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <p class="eyebrow">Direct</p>
+          <a href="mailto:info@kismetcodedigital.com">info@kismetcodedigital.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p class="footer__copyright">&copy; 2026 Kismet Code Digital. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/script.js"></script>
+</body>
 </html>
