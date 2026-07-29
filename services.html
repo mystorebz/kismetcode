@@ -7,6 +7,238 @@
   <meta name="description" content="What Kismet Code Digital builds: auditing, building, customizing, deploying, and managing custom websites and business systems." />
   <title>Services — Kismet Code Digital</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    /* ---------- SERVICES PAGE — page-specific styles ---------- */
+    /* Shared background, nav, footer, and the generic .page-hero
+       pattern live in the site-wide assets/css/styles.css. This
+       page's own card grid and modal live here. */
+
+    .services-field-section {
+      padding: var(--space-4) var(--space-3) var(--space-6);
+    }
+
+    /* Five-stage process grid, clickable variant: real <button>
+       elements, so this page keeps its own copy with hover/focus
+       states added on top of the base card look. The home page
+       has an independent copy of the same visual component using
+       plain, non-interactive <div> cards. */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      counter-reset: step;
+    }
+
+    .step-card {
+      position: relative;
+      counter-increment: step;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s var(--ease-settle), box-shadow 0.2s ease;
+    }
+
+    .step-card:hover,
+    .step-card:focus-visible {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -24px rgba(47, 125, 250, 0.35);
+    }
+
+    .step-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+    }
+
+    .step-card__title {
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .step-card__body {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .step-grid--five .step-card:nth-child(4) {
+      grid-column: 2 / 3;
+    }
+    .step-grid--five .step-card:nth-child(5) {
+      grid-column: 3 / 4;
+    }
+
+    @media (max-width: 900px) {
+      .step-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .step-grid--five .step-card:nth-child(4) {
+        grid-column: auto;
+      }
+      .step-grid--five .step-card:nth-child(5) {
+        grid-column: 1 / 3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .step-grid,
+      .step-grid--five {
+        grid-template-columns: 1fr;
+      }
+      .step-grid--five .step-card:nth-child(4),
+      .step-grid--five .step-card:nth-child(5) {
+        grid-column: auto;
+      }
+    }
+
+    .services-cta {
+      text-align: center;
+      padding: var(--space-6) var(--space-3) var(--space-7);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .services-cta h2 {
+      font-size: var(--type-h2);
+    }
+
+    .services-cta p {
+      color: var(--slate);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    /* ---------- SERVICE MODAL ---------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 15, 26, 0.55);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: var(--space-3);
+    }
+
+    .modal-overlay.is-open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-panel {
+      position: relative;
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-5);
+      max-width: 520px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.25s var(--ease-settle);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--bg-raised-2);
+      border-radius: 50%;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--slate);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--line-strong);
+      color: var(--ink);
+    }
+
+    .modal-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--signal-gradient);
+      margin-bottom: var(--space-3);
+    }
+
+    .modal-panel h2 {
+      font-size: 1.5rem;
+    }
+
+    .modal-body {
+      font-size: 1rem;
+      color: var(--slate);
+      line-height: 1.65;
+      margin-top: var(--space-2);
+    }
+
+    .modal-subhead {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-2);
+    }
+
+    .modal-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .modal-list li {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .modal-cta {
+      display: inline-block;
+      margin-top: var(--space-4);
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      .modal-panel {
+        padding: var(--space-4);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -110,6 +342,108 @@
     </div>
   </div>
 
-  <script src="/assets/js/script.js"></script>
+  <script>
+    // ---------- Services modal ----------
+    const SERVICE_DETAILS = {
+      auditing: {
+        title: 'Auditing',
+        body: 'An audit examines a site from two directions: how it performs (page speed, mobile-friendliness, broken links, basic search visibility) and how the underlying server and hosting are configured (domain setup, security, and whether everything is running the way it should). The result is a clear report of what is working, what needs attention, and what to prioritize.',
+        capabilities: [
+          'Page speed and mobile-responsiveness review',
+          'Broken link and basic SEO check',
+          'Server, hosting, and domain configuration review',
+          'A prioritized list of recommended fixes',
+        ],
+      },
+      building: {
+        title: 'Building Websites & Platforms',
+        body: 'This is the initial build: structure, pages, and core functionality, designed around what the business actually needs rather than adapted from a generic template. For businesses that need more than a single site, this also covers full platforms — multi-portal systems with separate admin, staff, and customer-facing experiences, all built on the same underlying foundation.',
+        capabilities: [
+          'Custom site structure and page architecture',
+          'Multi-portal platforms (admin, staff, and customer-facing)',
+          'Client intake and request-handling forms',
+          'Client-facing portal experiences where needed',
+          'Mobile-responsive design across all devices',
+        ],
+      },
+      customizing: {
+        title: 'Customizing',
+        body: 'Once the core structure exists, this service shapes it around the specific business: brand colors and typography, feature additions, and adjustments that make a site feel built for one business rather than assembled from parts.',
+        capabilities: [
+          'Brand-specific design and styling',
+          'Feature additions and adjustments',
+          'Content structure tailored to the business',
+          'Integration with existing tools or systems',
+        ],
+      },
+      deploying: {
+        title: 'Deploying',
+        body: 'A finished website still needs to actually go live: registering or connecting a domain, setting up hosting, and configuring everything required for the site to be reachable, secure, and stable from day one.',
+        capabilities: [
+          'Domain registration and DNS configuration',
+          'Hosting setup and deployment',
+          'SSL and security configuration',
+          'Launch-day checks before going live',
+        ],
+      },
+      managing: {
+        title: 'Managing',
+        body: 'Once a website launches, it requires periodic updates: new content, product changes, seasonal promotions, or general maintenance. This service covers ongoing management, so changes are handled without requiring in-house technical staff.',
+        capabilities: [
+          'Content and product updates',
+          'Routine maintenance and monitoring',
+          'Minor design and layout adjustments',
+          'Scheduled or on-demand update requests',
+        ],
+      },
+    };
+
+    function openServiceModal(key) {
+      const detail = SERVICE_DETAILS[key];
+      if (!detail) return;
+
+      document.getElementById('modal-title').textContent = detail.title;
+      document.getElementById('modal-body').textContent = detail.body;
+
+      const list = document.getElementById('modal-list');
+      list.innerHTML = '';
+      detail.capabilities.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      const overlay = document.getElementById('service-modal');
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeServiceModal() {
+      const overlay = document.getElementById('service-modal');
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function initServicesModal() {
+      const overlay = document.getElementById('service-modal');
+      if (!overlay) return;
+
+      document.querySelectorAll('[data-service-key]').forEach((btn) => {
+        btn.addEventListener('click', () => openServiceModal(btn.dataset.serviceKey));
+      });
+
+      document.getElementById('modal-close').addEventListener('click', closeServiceModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeServiceModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeServiceModal();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initServicesModal();
+    });
+  </script>
 </body>
 </html>
