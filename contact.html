@@ -4,71 +4,15 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Start a project with Kismet Code Digital. Tell us about the business and the idea, and receive a straightforward quote within one business day." />
+  <meta name="description" content="Start a project with Kismet Code Digital. Tell us about the business and the idea, from custom websites to full business platforms." />
   <title>Contact — Kismet Code Digital</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
     /* ---------- CONTACT PAGE — page-specific styles ---------- */
     /* Shared background, nav, and footer live in the site-wide
-       assets/css/styles.css. Everything below — the hex mark,
-       the intro copy, and the form itself — is specific to this
-       page and lives only here. */
-
-    /* Decorative hexagon mark above the form. Currently only
-       used on this page. */
-    .alien-node {
-      position: relative;
-      width: 180px;
-      height: 200px;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: transparent;
-      border: 1.5px solid var(--node-glow, #22d3ee);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s var(--ease-settle);
-    }
-
-    .alien-node:hover {
-      transform: scale(1.06);
-      z-index: 10;
-    }
-
-    .alien-node__hex {
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: var(--space-2);
-    }
-
-    .alien-node__content {
-      max-width: 82%;
-    }
-
-    .alien-node__content h3 {
-      font-size: 1rem;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-      line-height: 1.25;
-    }
-
-    .alien-node__content p {
-      font-size: 0.75rem;
-      color: var(--slate);
-      line-height: 1.4;
-    }
-
-    @media (max-width: 640px) {
-      .alien-node {
-        width: 200px;
-        height: 220px;
-      }
-    }
+       assets/css/styles.css. Everything below — the intro copy,
+       the three-column engagement strip, and the form itself —
+       is specific to this page and lives only here. */
 
     .contact-page {
       padding-top: var(--space-6);
@@ -83,12 +27,6 @@
 
     .contact-intro {
       margin-bottom: var(--space-6);
-    }
-
-    .contact-intro__node {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto var(--space-4);
     }
 
     .contact-intro h1 {
@@ -116,6 +54,74 @@
       padding-bottom: 2px;
     }
 
+    /* ---------- ENGAGEMENT STRIP ---------- */
+    /* Three columns summarizing what gets built, the process,
+       and the commitment behind it, sitting between the intro
+       and the form itself. */
+    .contact-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      width: 100%;
+      margin-bottom: var(--space-6);
+      text-align: left;
+    }
+
+    .contact-pillar {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+    }
+
+    .contact-pillar__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: var(--space-3);
+    }
+
+    .contact-pillar__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-pillar__list li {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .contact-pillar__icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: var(--signal-gradient);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 860px) {
+      .contact-pillars {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .contact-form {
       width: 100%;
       display: flex;
@@ -136,6 +142,21 @@
       font-size: 0.9375rem;
       color: var(--ink);
       font-weight: 500;
+    }
+
+    /* Name + Email side by side, matching the reference layout.
+       Zero gap between this row and the fields above/below it,
+       consistent with how the rest of the form is already spaced. */
+    .contact-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    @media (max-width: 560px) {
+      .contact-form__row {
+        grid-template-columns: 1fr;
+      }
     }
 
     .contact-form input,
@@ -204,10 +225,6 @@
       .contact-form {
         padding: var(--space-4);
       }
-      .contact-intro__node {
-        width: 110px;
-        height: 110px;
-      }
     }
   </style>
 </head>
@@ -231,33 +248,55 @@
   <main>
     <div class="contact-page container">
       <div class="contact-intro">
-        <div class="alien-node contact-intro__node" style="--node-glow:#2f7dfa">
-          <div class="alien-node__hex">
-            <div class="alien-node__content">
-              <h3>Let's talk</h3>
-              <p>Tell us about the project</p>
-            </div>
-          </div>
-        </div>
-        <p class="eyebrow">Request a quote</p>
-        <h1>Start your project.</h1>
+        <p class="eyebrow">Start a project</p>
+        <h1>Build your next platform.<br />Tell us what you envision.</h1>
         <p class="contact-sub">
-          Tell us about the business and the idea. A straightforward
-          quote follows within one business day.
+          Custom websites and business platforms, engineered end to
+          end around how the business actually operates.
         </p>
         <a href="mailto:info@kismetcodedigital.com" class="contact-email">info@kismetcodedigital.com</a>
       </div>
 
+      <div class="contact-pillars">
+        <div class="contact-pillar">
+          <p class="contact-pillar__label">What we build</p>
+          <ul class="contact-pillar__list">
+            <li><span class="contact-pillar__icon">W</span>Custom Websites</li>
+            <li><span class="contact-pillar__icon">P</span>Multi-Portal Platforms</li>
+            <li><span class="contact-pillar__icon">A</span>Business Automation</li>
+          </ul>
+        </div>
+        <div class="contact-pillar">
+          <p class="contact-pillar__label">Our process</p>
+          <ul class="contact-pillar__list">
+            <li><span class="contact-pillar__icon">1</span>Auditing &amp; Strategy</li>
+            <li><span class="contact-pillar__icon">2</span>Building &amp; Customizing</li>
+            <li><span class="contact-pillar__icon">3</span>Deploying</li>
+            <li><span class="contact-pillar__icon">4</span>Ongoing Management</li>
+          </ul>
+        </div>
+        <div class="contact-pillar">
+          <p class="contact-pillar__label">Our commitment</p>
+          <ul class="contact-pillar__list">
+            <li><span class="contact-pillar__icon">T</span>Clear Timelines</li>
+            <li><span class="contact-pillar__icon">S</span>Scoped, Not Overbuilt</li>
+            <li><span class="contact-pillar__icon">F</span>Full-Scope Delivery</li>
+          </ul>
+        </div>
+      </div>
+
       <form class="contact-form" id="contact-form">
         <div id="contact-fields">
-          <label>
-            Name
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" required />
-          </label>
+          <div class="contact-form__row">
+            <label>
+              Name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+          </div>
           <label>
             Phone number
             <input type="tel" name="phone" required />
