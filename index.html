@@ -7,6 +7,204 @@
   <meta name="description" content="Kismet Code Digital — custom websites and business systems, engineered end to end for companies that need something built around how they actually operate. Built in Belize." />
   <title>Kismet Code Digital</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    /* ---------- HOME PAGE — page-specific styles ---------- */
+    /* Everything below is specific to this page's own layout.
+       Shared background, nav, and footer styling lives in the
+       site-wide assets/css/styles.css. */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-7) 0 var(--space-6);
+      text-align: center;
+    }
+
+    .hero__watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      max-width: none;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+      filter: grayscale(0.4) brightness(1.8);
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__headline {
+      font-size: var(--type-hero);
+      margin-top: var(--space-2);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__sub {
+      font-size: 1.1rem;
+      color: var(--slate);
+      max-width: 500px;
+      margin-top: var(--space-3);
+      line-height: 1.6;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .platforms-section {
+      padding: var(--space-6) var(--space-3);
+      position: relative;
+    }
+
+    .platforms-section__title {
+      font-size: var(--type-h1);
+      margin-top: var(--space-2);
+      max-width: 640px;
+    }
+
+    /* Five-stage process grid. Services page has its own
+       independent copy of this component with added button
+       and hover states for its clickable variant. */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      counter-reset: step;
+    }
+
+    .step-card {
+      position: relative;
+      counter-increment: step;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      text-align: left;
+    }
+
+    .step-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+    }
+
+    .step-card__title {
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .step-card__body {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* Five cards in a three-column grid: center the last two
+       cards under columns 2-3 instead of leaving an empty gap. */
+    .step-grid--five .step-card:nth-child(4) {
+      grid-column: 2 / 3;
+    }
+    .step-grid--five .step-card:nth-child(5) {
+      grid-column: 3 / 4;
+    }
+
+    @media (max-width: 900px) {
+      .step-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .step-grid--five .step-card:nth-child(4) {
+        grid-column: auto;
+      }
+      .step-grid--five .step-card:nth-child(5) {
+        grid-column: 1 / 3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .step-grid,
+      .step-grid--five {
+        grid-template-columns: 1fr;
+      }
+      .step-grid--five .step-card:nth-child(4),
+      .step-grid--five .step-card:nth-child(5) {
+        grid-column: auto;
+      }
+    }
+
+    .cta-band {
+      background: var(--bg-raised);
+      padding: var(--space-6) 0;
+      margin-top: var(--space-6);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(34, 211, 238, 0.18), transparent 60%);
+    }
+
+    .cta-band__inner {
+      position: relative;
+      text-align: center;
+      max-width: 560px;
+    }
+
+    .cta-band h2 {
+      color: var(--ink);
+      font-size: var(--type-h1);
+    }
+
+    .cta-band p {
+      color: var(--slate);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: var(--space-6) 0 var(--space-5);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero__watermark {
+        width: 600px;
+      }
+      .hero__actions {
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .hero__actions .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .cta-band__inner {
+        padding: 0 var(--space-2);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -108,6 +306,5 @@
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>
