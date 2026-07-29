@@ -7,6 +7,209 @@
   <meta name="description" content="Start a project with Kismet Code Digital. Tell us about the business and the idea, and receive a straightforward quote within one business day." />
   <title>Contact — Kismet Code Digital</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    /* ---------- CONTACT PAGE — page-specific styles ---------- */
+    /* Shared background, nav, and footer live in the site-wide
+       assets/css/styles.css. Everything below — the hex mark,
+       the intro copy, and the form itself — is specific to this
+       page and lives only here. */
+
+    /* Decorative hexagon mark above the form. Currently only
+       used on this page. */
+    .alien-node {
+      position: relative;
+      width: 180px;
+      height: 200px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: transparent;
+      border: 1.5px solid var(--node-glow, #22d3ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s var(--ease-settle);
+    }
+
+    .alien-node:hover {
+      transform: scale(1.06);
+      z-index: 10;
+    }
+
+    .alien-node__hex {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-2);
+    }
+
+    .alien-node__content {
+      max-width: 82%;
+    }
+
+    .alien-node__content h3 {
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.25;
+    }
+
+    .alien-node__content p {
+      font-size: 0.75rem;
+      color: var(--slate);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      .alien-node {
+        width: 200px;
+        height: 220px;
+      }
+    }
+
+    .contact-page {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-7);
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-intro {
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-intro__node {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto var(--space-4);
+    }
+
+    .contact-intro h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-top: var(--space-3);
+      letter-spacing: -0.02em;
+    }
+
+    .contact-sub {
+      font-size: 1.1rem;
+      color: var(--slate);
+      margin-top: var(--space-3);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 2px;
+    }
+
+    .contact-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      background: var(--bg-raised);
+      padding: var(--space-6);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .contact-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      color: var(--ink);
+      resize: vertical;
+      width: 100%;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+
+    .contact-form button {
+      align-self: center;
+      border: none;
+      margin-top: var(--space-2);
+      width: 100%;
+      padding: 1rem 1.7rem;
+      font-size: 1rem;
+    }
+
+    .contact-success {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ink);
+      padding: var(--space-4) 0;
+      text-align: center;
+      display: none;
+    }
+
+    .contact-success.is-visible {
+      display: block;
+    }
+
+    .contact-error {
+      font-size: 0.9375rem;
+      color: #ff9b8a;
+      background: rgba(255, 107, 74, 0.12);
+      border: 1px solid rgba(255, 107, 74, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      display: none;
+    }
+
+    .contact-error.is-visible {
+      display: block;
+    }
+
+    .contact-form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 640px) {
+      .contact-form {
+        padding: var(--space-4);
+      }
+      .contact-intro__node {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -128,6 +331,55 @@
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
+  <script>
+    // ---------- Contact form ----------
+    // Replace this with the real endpoint URL from your Formspree
+    // dashboard (formspree.io -> your form -> Integration tab). It
+    // looks like: https://formspree.io/f/xxxxxxxx
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const successMsg = document.getElementById('contact-success');
+      const errorMsg = document.getElementById('contact-error');
+      const fieldsWrapper = document.getElementById('contact-fields');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        errorMsg.classList.remove('is-visible');
+
+        const data = new FormData(form);
+
+        try {
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' },
+          });
+
+          if (response.ok) {
+            fieldsWrapper.style.display = 'none';
+            successMsg.classList.add('is-visible');
+            form.reset();
+          } else {
+            throw new Error('Request failed');
+          }
+        } catch {
+          errorMsg.classList.add('is-visible');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit inquiry';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initContactForm();
+    });
+  </script>
 </body>
 </html>
