@@ -59,10 +59,11 @@ const SERVICE_DETAILS = {
     ],
   },
   building: {
-    title: 'Building',
-    body: 'This is the initial build: structure, pages, and core functionality, designed around what the business actually needs rather than adapted from a generic template. This includes systems for managing incoming client requests and a portal experience for clients to interact with, where the project calls for it.',
+    title: 'Building Websites & Platforms',
+    body: 'This is the initial build: structure, pages, and core functionality, designed around what the business actually needs rather than adapted from a generic template. For businesses that need more than a single site, this also covers full platforms — multi-portal systems with separate admin, staff, and customer-facing experiences, all built on the same underlying foundation.',
     capabilities: [
       'Custom site structure and page architecture',
+      'Multi-portal platforms (admin, staff, and customer-facing)',
       'Client intake and request-handling forms',
       'Client-facing portal experiences where needed',
       'Mobile-responsive design across all devices',
