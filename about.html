@@ -7,6 +7,46 @@
   <meta name="description" content="Kismet Code Digital is a Belize-registered software practice building custom web applications end to end for growing businesses." />
   <title>About — Kismet Code Digital</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    /* ---------- ABOUT PAGE — page-specific styles ---------- */
+    /* Shared background, nav, footer, and the generic .page-hero
+       pattern live in the site-wide assets/css/styles.css. The
+       two-column emblem/copy layout below is specific to this
+       page. */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-6);
+      padding-bottom: var(--space-7);
+      align-items: start;
+    }
+
+    .about-mark img {
+      width: 100%;
+      max-width: 180px;
+    }
+
+    .about-copy p {
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.75;
+      margin-top: var(--space-3);
+      max-width: 600px;
+    }
+
+    .about-copy p:first-child {
+      margin-top: 0;
+    }
+
+    @media (max-width: 720px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-mark img {
+        max-width: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -92,6 +132,5 @@
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>
