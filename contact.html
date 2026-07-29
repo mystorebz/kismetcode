@@ -44,16 +44,6 @@
       max-width: 560px;
     }
 
-    .contact-email {
-      display: inline-block;
-      margin-top: var(--space-4);
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--blue);
-      border-bottom: 1px solid var(--blue);
-      padding-bottom: 2px;
-    }
-
     /* ---------- ENGAGEMENT STRIP ---------- */
     /* Three columns summarizing what gets built, the process,
        and the commitment behind it, sitting between the intro
@@ -132,17 +122,33 @@
       }
     }
 
+    /* Form panel: same gradient top-edge treatment as the three
+       pillar cards above it, so the whole page reads as one
+       consistent design instead of only the cards having color. */
     .contact-form {
+      position: relative;
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: var(--space-4);
       background: var(--bg-raised);
       padding: var(--space-6);
+      padding-top: calc(var(--space-6) + 4px);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.4);
       text-align: left;
+      overflow: hidden;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--signal-gradient);
     }
 
     .contact-form label {
@@ -234,6 +240,7 @@
     @media (max-width: 640px) {
       .contact-form {
         padding: var(--space-4);
+        padding-top: calc(var(--space-4) + 4px);
       }
     }
   </style>
@@ -264,7 +271,6 @@
           Custom websites and business platforms, engineered end to
           end around how the business actually operates.
         </p>
-        <a href="mailto:info@kismetcodedigital.com" class="contact-email">info@kismetcodedigital.com</a>
       </div>
 
       <div class="contact-pillars">
