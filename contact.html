@@ -386,12 +386,68 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      // Public key from EmailJS dashboard → Account → General.
+      emailjs.init({
+        publicKey: '0J9RlI4x1fQ8P9IG9',
+      });
+    })();
+  </script>
   <script>
-    // ---------- Contact form ----------
-    // Replace this with the real endpoint URL from your Formspree
-    // dashboard (formspree.io -> your form -> Integration tab). It
-    // looks like: https://formspree.io/f/xxxxxxxx
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+    // ---------- Contact form (EmailJS) ----------
+    // Service ID from EmailJS dashboard → Email Services → connected
+    // service.
+    const EMAILJS_SERVICE_ID = 'service_kgk97jd';
+    const EMAILJS_TEMPLATE_ID = 'template_ccw5z4a';
+
+    // The EmailJS template's Subject and Content use {{title}},
+    // {{name}}, {{time}}, and {{message}}. The form itself doesn't
+    // collect "title" or "time" from the person, and it collects a
+    // few extra fields (phone, project type, budget) that aren't
+    // referenced anywhere in the template body. Rather than lose
+    // that information, or edit the EmailJS template itself, this
+    // fills in the two missing template variables automatically and
+    // folds the extra fields into the {{message}} content sent to
+    // the template, ahead of the person's own written description.
+    function buildTemplateParams(form) {
+      const data = new FormData(form);
+
+      const projectTypeLabels = {
+        'new-website': 'A new website',
+        'online-store': 'An online store',
+        'booking-system': 'A booking or ordering system',
+        'business-software': 'Business management software',
+        'fix-existing': 'An existing site or system',
+        'not-sure': 'Undetermined',
+      };
+
+      const budgetLabels = {
+        'under-500': 'Under $500',
+        '500-1500': '$500 to $1,500',
+        '1500-5000': '$1,500 to $5,000',
+        'not-sure': 'Undetermined',
+      };
+
+      const projectTypeRaw = data.get('projectType');
+      const projectTypeText = projectTypeLabels[projectTypeRaw] || projectTypeRaw || 'Not specified';
+      const budgetText = budgetLabels[data.get('budget')] || data.get('budget') || 'Not specified';
+
+      const combinedMessage =
+        'Phone: ' + data.get('phone') + '\n' +
+        'Project type: ' + projectTypeText + '\n' +
+        'Estimated budget: ' + budgetText + '\n\n' +
+        'Project description:\n' + data.get('message');
+
+      return {
+        title: projectTypeText,
+        name: data.get('name'),
+        email: data.get('email'),
+        time: new Date().toLocaleString(),
+        message: combinedMessage,
+      };
+    }
 
     function initContactForm() {
       const form = document.getElementById('contact-form');
@@ -402,37 +458,31 @@
       const errorMsg = document.getElementById('contact-error');
       const fieldsWrapper = document.getElementById('contact-fields');
 
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
         errorMsg.classList.remove('is-visible');
 
-        const data = new FormData(form);
+        const templateParams = buildTemplateParams(form);
 
-        try {
-          const response = await fetch(FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            body: data,
-            headers: { Accept: 'application/json' },
-          });
-
-          if (response.ok) {
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams).then(
+          function () {
             fieldsWrapper.style.display = 'none';
             successMsg.classList.add('is-visible');
             form.reset();
-          } else {
-            throw new Error('Request failed');
+          },
+          function (error) {
+            console.error('EmailJS error:', error);
+            errorMsg.classList.add('is-visible');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit inquiry';
           }
-        } catch {
-          errorMsg.classList.add('is-visible');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Submit inquiry';
-        }
+        );
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function () {
       initContactForm();
     });
   </script>
