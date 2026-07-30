@@ -65,6 +65,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--type-body);
@@ -79,6 +80,36 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Site-wide watermark, replacing the old img.hero__watermark that
+   only existed on the home page. Fixed positioning + z-index: -1
+   means this shows on every page automatically, with no HTML
+   markup required anywhere. */
+body::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  max-width: none;
+  background-image: url('/assets/images/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.06;
+  filter: grayscale(0.4) brightness(1.8);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (max-width: 640px) {
+  body::before {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -451,19 +482,6 @@ img {
   text-align: center;
 }
 
-.hero__watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  max-width: none;
-  opacity: 0.06;
-  pointer-events: none;
-  z-index: 0;
-  filter: grayscale(0.4) brightness(1.8);
-}
-
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -562,9 +580,6 @@ img {
 }
 
 @media (max-width: 640px) {
-  .hero__watermark {
-    width: 600px;
-  }
   .hero__actions {
     flex-wrap: wrap;
     width: 100%;
