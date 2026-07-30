@@ -1,50 +1,110 @@
 // Kismet Code Digital — shared site script
-// Handles: contact form submission (Formspree), services modal open/close
+// Handles: shared header/footer, contact form submission (Formspree),
+// services modal open/close
 
-// Replace this with the real endpoint URL from your Formspree
-// dashboard (formspree.io -> your form -> Integration tab). It looks
-// like: https://formspree.io/f/xxxxxxxx
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+// ==========================================================
+// SHARED HEADER & FOOTER
+// ==========================================================
+// The nav bar and footer used to be copy-pasted into every HTML
+// file. That meant changing a single link meant editing 7+ files
+// by hand. Now they exist ONCE, right here, as plain strings. Every
+// page just needs two empty placeholder elements in its markup:
+//   <div id="site-header"></div>   (right after <body>)
+//   <div id="site-footer"></div>   (right before </body>)
+// and this script fills them in on load.
+//
+// TO ADD SOMETHING THAT SHOULD APPEAR ON EVERY PAGE (a new nav
+// link, a new footer column, a newsletter signup block, etc.):
+// edit SITE_HEADER_HTML or SITE_FOOTER_HTML below, ONE TIME. Every
+// page picks up the change automatically. Nothing else needs to
+// change, on any page, ever, for that kind of update.
 
-// ---------- Contact form ----------
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
+const SITE_HEADER_HTML = `
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/index.html" class="nav__brand">
+        <img src="/assets/images/logo.png" alt="Kismet Code Digital" class="nav__logo" />
+        <span class="nav__wordmark">Kismet Code Digital</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/index.html" class="nav__link" data-nav-key="index">Home</a>
+        <a href="/services.html" class="nav__link" data-nav-key="services">Services</a>
+        <a href="/about.html" class="nav__link" data-nav-key="about">About</a>
+        <a href="/contact.html" class="nav__cta">Start a project</a>
+      </nav>
+    </div>
+  </header>
+`;
 
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const successMsg = document.getElementById('contact-success');
-  const errorMsg = document.getElementById('contact-error');
-  const fieldsWrapper = document.getElementById('contact-fields');
+const SITE_FOOTER_HTML = `
+  <footer class="footer">
+    <hr class="hairline" />
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="/assets/images/logo.png" alt="" class="footer__logo" />
+        <div>
+          <p class="footer__name">Kismet Code Digital</p>
+          <p class="footer__tagline">Software, built with intention.</p>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <p class="eyebrow">Site</p>
+          <a href="/services.html">Services</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+        <div class="footer__col">
+          <p class="eyebrow">Legal</p>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer__col">
+          <p class="eyebrow">Direct</p>
+          <a href="mailto:info@kismetcodedigital.com">info@kismetcodedigital.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p class="footer__copyright">&copy; 2026 Kismet Code Digital. All rights reserved.</p>
+    </div>
+  </footer>
+`;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    errorMsg.classList.remove('is-visible');
-
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      });
-
-      if (response.ok) {
-        fieldsWrapper.style.display = 'none';
-        successMsg.classList.add('is-visible');
-        form.reset();
-      } else {
-        throw new Error('Request failed');
-      }
-    } catch {
-      errorMsg.classList.add('is-visible');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit inquiry';
-    }
-  });
+// Figures out which page is currently open, by filename, so the
+// matching nav link can get the active-state underline. The root
+// path ("/", no filename) counts as the home page.
+function getCurrentPageKey() {
+  const filename = window.location.pathname.split('/').pop();
+  if (!filename || filename === '') return 'index';
+  return filename.replace('.html', '');
 }
+
+function injectSharedHeaderFooter() {
+  const headerSlot = document.getElementById('site-header');
+  const footerSlot = document.getElementById('site-footer');
+
+  if (headerSlot) {
+    headerSlot.innerHTML = SITE_HEADER_HTML;
+
+    // Mark the current page's nav link active, matching whatever
+    // page is actually loaded.
+    const currentKey = getCurrentPageKey();
+    const activeLink = headerSlot.querySelector(`[data-nav-key="${currentKey}"]`);
+    if (activeLink) activeLink.classList.add('nav__link--active');
+  }
+
+  if (footerSlot) {
+    footerSlot.innerHTML = SITE_FOOTER_HTML;
+  }
+}
+
+// NOTE: contact.html has its own inline contact-form submission
+// logic (EmailJS-based, initContactFormEmailJS), since that page
+// needs project-specific field handling (phone, project type,
+// budget) folded into the message before sending. That logic stays
+// on that page rather than living here, to avoid two different
+// submit handlers both trying to attach to the same #contact-form.
 
 // ---------- Services modal ----------
 const SERVICE_DETAILS = {
@@ -145,6 +205,6 @@ function initServicesModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initContactForm();
+  injectSharedHeaderFooter();
   initServicesModal();
 });
