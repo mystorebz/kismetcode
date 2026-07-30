@@ -352,7 +352,7 @@
         <button type="submit" class="btn btn--primary">Submit inquiry</button>
 
         <p class="contact-success" id="contact-success">
-          Inquiry received. A response will follow at the email address provided.
+          Your message has been sent. A response will follow at the email address provided.
         </p>
       </form>
     </div>
@@ -469,6 +469,7 @@
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams).then(
           function () {
             fieldsWrapper.style.display = 'none';
+            submitBtn.style.display = 'none';
             successMsg.classList.add('is-visible');
             form.reset();
           },
