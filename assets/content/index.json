@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "eyebrow": "Kismet Code Digital",
+    "headlineLine1": "Enterprise-grade solutions,",
+    "headlineLine2": "built in Belize.",
+    "subtext": "Custom websites and business systems engineered end to end, for companies that need something built around how they actually operate.",
+    "primaryButtonText": "Request a quote",
+    "primaryButtonLink": "/contact.html",
+    "secondaryButtonText": "What we build",
+    "secondaryButtonLink": "/services.html"
+  },
+  "platformsIntro": {
+    "eyebrow": "The difference",
+    "title": "A website is a brochure. A platform is infrastructure."
+  },
+  "contrast": {
+    "show": true,
+    "oldLabel": "Most agencies",
+    "oldHeading": "Sell pages.",
+    "oldBody": "A handful of static screens, dropped onto a template, with no real connection between the front end and how the business actually runs day to day.",
+    "newLabel": "Kismet Code Digital",
+    "newHeading": "Builds systems.",
+    "newBody": "A site or a full multi-portal platform, engineered around the specific business — admin, staff, and customer experiences that actually run the operation, not just describe it."
+  },
+  "capabilityGrid": {
+    "show": true,
+    "cards": [
+      {
+        "title": "Custom Platforms",
+        "body": "Multi-portal systems — admin, staff, and customer-facing — built on one shared foundation instead of stitched-together tools."
+      },
+      {
+        "title": "Business Automation",
+        "body": "Workflows, request handling, and day-to-day operations wired directly into the platform, so less runs on manual effort."
+      },
+      {
+        "title": "Ongoing Management",
+        "body": "Updates, fixes, and changes handled directly, for a site or platform that's already live and in use."
+      }
+    ]
+  },
+  "platformsLink": {
+    "text": "See the full process, stage by stage →",
+    "link": "/services.html"
+  },
+  "ctaBand": {
+    "show": true,
+    "heading": "Every project starts with a conversation.",
+    "body": "A straightforward quote, with no obligation.",
+    "buttonText": "Request a quote",
+    "buttonLink": "/contact.html"
+  }
+}
