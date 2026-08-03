@@ -253,40 +253,58 @@
   <div id="site-header"></div>
 
   <main>
-    <section class="hero">
+    <!--
+      Every id="..." below is a hook that assets/js/script.js looks
+      for once assets/content/index.json has loaded. The text sitting
+      here right now is the FALLBACK — if the JSON ever fails to load,
+      this is exactly what visitors see, so the page never renders
+      blank or broken. Once the CMS is wired up, editing that JSON is
+      what actually changes the live site; editing the text below by
+      hand still works too, it just means editing the fallback copy
+      rather than the live content.
+    -->
+    <section class="hero" id="section-hero">
       <div class="container hero__inner">
-        <p class="eyebrow">Kismet Code Digital</p>
-        <h1 class="hero__headline">Enterprise-grade solutions,<br />built in Belize.</h1>
-        <p class="hero__sub">
+        <p class="eyebrow" id="hero-eyebrow">Kismet Code Digital</p>
+        <h1 class="hero__headline"><span id="hero-headline-line1">Enterprise-grade solutions,</span><br /><span id="hero-headline-line2">built in Belize.</span></h1>
+        <p class="hero__sub" id="hero-subtext">
           Custom websites and business systems engineered end to
           end, for companies that need something built around how
           they actually operate.
         </p>
         <div class="hero__actions">
-          <a href="/contact.html" class="btn btn--primary">Request a quote</a>
-          <a href="/services.html" class="btn btn--ghost">What we build</a>
+          <a href="/contact.html" class="btn btn--primary" id="hero-btn-primary">Request a quote</a>
+          <a href="/services.html" class="btn btn--ghost" id="hero-btn-secondary">What we build</a>
         </div>
       </div>
     </section>
 
     <section class="container platforms-section">
-      <p class="eyebrow">The difference</p>
-      <h2 class="platforms-section__title">A website is a brochure. A platform is infrastructure.</h2>
+      <p class="eyebrow" id="platforms-eyebrow">The difference</p>
+      <h2 class="platforms-section__title" id="platforms-title">A website is a brochure. A platform is infrastructure.</h2>
 
-      <div class="contrast">
+      <!-- Removable as a whole block: contrast.show in index.json -->
+      <div class="contrast" id="section-contrast">
         <div class="contrast__side contrast__side--old">
-          <p class="contrast__label">Most agencies</p>
-          <h3>Sell pages.</h3>
-          <p>A handful of static screens, dropped onto a template, with no real connection between the front end and how the business actually runs day to day.</p>
+          <p class="contrast__label" id="contrast-old-label">Most agencies</p>
+          <h3 id="contrast-old-heading">Sell pages.</h3>
+          <p id="contrast-old-body">A handful of static screens, dropped onto a template, with no real connection between the front end and how the business actually runs day to day.</p>
         </div>
         <div class="contrast__side contrast__side--new">
-          <p class="contrast__label">Kismet Code Digital</p>
-          <h3>Builds systems.</h3>
-          <p>A site or a full multi-portal platform, engineered around the specific business — admin, staff, and customer experiences that actually run the operation, not just describe it.</p>
+          <p class="contrast__label" id="contrast-new-label">Kismet Code Digital</p>
+          <h3 id="contrast-new-heading">Builds systems.</h3>
+          <p id="contrast-new-body">A site or a full multi-portal platform, engineered around the specific business — admin, staff, and customer experiences that actually run the operation, not just describe it.</p>
         </div>
       </div>
 
-      <div class="capability-grid">
+      <!--
+        Removable as a whole block: capabilityGrid.show in index.json.
+        The three cards below are FALLBACK only. Once content loads,
+        script.js empties this div and rebuilds it entirely from
+        capabilityGrid.cards — a real list, so cards can be deleted,
+        reordered, or added to from the CMS, not just edited in place.
+      -->
+      <div class="capability-grid" id="section-capability-grid">
         <div class="capability-card">
           <div class="capability-card__icon">P</div>
           <h3 class="capability-card__title">Custom Platforms</h3>
@@ -304,14 +322,15 @@
         </div>
       </div>
 
-      <a href="/services.html" class="platforms-section__link">See the full process, stage by stage →</a>
+      <a href="/services.html" class="platforms-section__link" id="platforms-link">See the full process, stage by stage →</a>
     </section>
 
-    <section class="cta-band">
+    <!-- Removable as a whole block: ctaBand.show in index.json -->
+    <section class="cta-band" id="section-cta-band">
       <div class="container cta-band__inner">
-        <h2>Every project starts with a conversation.</h2>
-        <p>A straightforward quote, with no obligation.</p>
-        <a href="/contact.html" class="btn btn--primary">Request a quote</a>
+        <h2 id="cta-heading">Every project starts with a conversation.</h2>
+        <p id="cta-body">A straightforward quote, with no obligation.</p>
+        <a href="/contact.html" class="btn btn--primary" id="cta-button">Request a quote</a>
       </div>
     </section>
   </main>
