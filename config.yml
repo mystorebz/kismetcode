@@ -1,0 +1,81 @@
+backend:
+  name: github
+  repo: mystorebz/kismetcode
+  branch: main
+  # ⬇️ REPLACE once the login proxy (Phase 2, next step) is deployed.
+  # Until this points at a real address, the "Login with GitHub"
+  # button on this dashboard will not work yet.
+  base_url: https://YOUR-OAUTH-WORKER-URL
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "assets/content/index.json"
+        fields:
+          - label: "Hero (top banner)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow (small label above the headline)", name: "eyebrow", widget: "string" }
+              - { label: "Headline — line 1", name: "headlineLine1", widget: "string" }
+              - { label: "Headline — line 2", name: "headlineLine2", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text" }
+              - { label: "Primary button text", name: "primaryButtonText", widget: "string" }
+              - { label: "Primary button link", name: "primaryButtonLink", widget: "string" }
+              - { label: "Secondary button text", name: "secondaryButtonText", widget: "string" }
+              - { label: "Secondary button link", name: "secondaryButtonLink", widget: "string" }
+
+          - label: "\"The Difference\" heading"
+            name: "platformsIntro"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+
+          - label: "Contrast block (brochure vs. platform)"
+            name: "contrast"
+            widget: "object"
+            fields:
+              - { label: "Show this section?", name: "show", widget: "boolean", default: true }
+              - { label: "Left side — label", name: "oldLabel", widget: "string" }
+              - { label: "Left side — heading", name: "oldHeading", widget: "string" }
+              - { label: "Left side — body text", name: "oldBody", widget: "text" }
+              - { label: "Right side — label", name: "newLabel", widget: "string" }
+              - { label: "Right side — heading", name: "newHeading", widget: "string" }
+              - { label: "Right side — body text", name: "newBody", widget: "text" }
+
+          - label: "Capability cards"
+            name: "capabilityGrid"
+            widget: "object"
+            fields:
+              - { label: "Show this section?", name: "show", widget: "boolean", default: true }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                summary: "{{title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body text", name: "body", widget: "text" }
+
+          - label: "Link beneath the cards"
+            name: "platformsLink"
+            widget: "object"
+            fields:
+              - { label: "Link text", name: "text", widget: "string" }
+              - { label: "Link target", name: "link", widget: "string" }
+
+          - label: "Closing banner (\"every project starts...\")"
+            name: "ctaBand"
+            widget: "object"
+            fields:
+              - { label: "Show this section?", name: "show", widget: "boolean", default: true }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body text", name: "body", widget: "text" }
+              - { label: "Button text", name: "buttonText", widget: "string" }
+              - { label: "Button link", name: "buttonLink", widget: "string" }
