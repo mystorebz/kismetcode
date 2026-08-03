@@ -1,17 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager — Kismet Code Digital</title>
+  <meta name="description" content="Kismet Code Digital — custom websites and business systems, engineered end to end for companies that need something built around how they actually operate. Built in Belize." />
+  <title>Kismet Code Digital</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <style>
+    /* ---------- HOME PAGE — page-specific styles ---------- */
+    /* Everything below is specific to this page's own layout.
+       Shared background, nav, and footer styling lives in the
+       site-wide assets/css/styles.css. */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-7) 0 var(--space-6);
+      text-align: center;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__headline {
+      font-size: var(--type-hero);
+      margin-top: var(--space-2);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__sub {
+      font-size: 1.1rem;
+      color: var(--slate);
+      max-width: 500px;
+      margin-top: var(--space-3);
+      line-height: 1.6;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .platforms-section {
+      padding: var(--space-6) var(--space-3);
+      position: relative;
+    }
+
+    .platforms-section__title {
+      font-size: var(--type-h1);
+      margin-top: var(--space-2);
+      max-width: 640px;
+    }
+
+    /* ---------- CONTRAST BLOCK ---------- */
+    /* "A website is a brochure. A platform is infrastructure."
+       A two-column before/after device: the old, limited way of
+       thinking about a site on the left, faded and muted; what
+       Kismet actually builds on the right, in full color. This
+       replaces the old numbered step-grid entirely on this page. */
+    .contrast {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .contrast__side {
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      border: 1px solid var(--line);
+    }
+
+    .contrast__side--old {
+      background: transparent;
+      opacity: 0.55;
+    }
+
+    .contrast__side--new {
+      background: var(--bg-raised);
+      border-color: var(--line-strong);
+      box-shadow: 0 24px 60px -30px rgba(47, 125, 250, 0.35);
+    }
+
+    .contrast__label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    .contrast__side--new .contrast__label {
+      background: var(--signal-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .contrast__side h3 {
+      font-size: 1.3rem;
+      margin-top: 0.6rem;
+    }
+
+    .contrast__side p {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-top: 0.6rem;
+    }
+
+    .contrast__side--new p {
+      color: var(--ink);
+      opacity: 0.85;
+    }
+
+    /* ---------- CAPABILITY GRID ---------- */
+    /* Three outcome-named cards: what the business gets, not a
+       numbered stage of a process. Services page has its own,
+       structurally different breakdown of the full five stages. */
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .capability-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      text-align: left;
+    }
+
+    .capability-card__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--signal-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .capability-card__title {
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .capability-card__body {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .contrast {
+        grid-template-columns: 1fr;
+      }
+      .capability-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .platforms-section__link {
+      display: inline-block;
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
+    }
+
+    .platforms-section__link:hover {
+      opacity: 0.75;
+    }
+
+    .cta-band {
+      background: var(--bg-raised);
+      padding: var(--space-6) 0;
+      margin-top: var(--space-6);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(34, 211, 238, 0.18), transparent 60%);
+    }
+
+    .cta-band__inner {
+      position: relative;
+      text-align: center;
+      max-width: 560px;
+    }
+
+    .cta-band h2 {
+      color: var(--ink);
+      font-size: var(--type-h1);
+    }
+
+    .cta-band p {
+      color: var(--slate);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: var(--space-6) 0 var(--space-5);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero__actions {
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .hero__actions .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .cta-band__inner {
+        padding: 0 var(--space-2);
+      }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    This page loads Decap CMS itself. It automatically looks for
-    config.yml sitting right next to this file (in this same /admin
-    folder) — that file is what actually defines which pages and
-    fields show up as the editable dashboard.
-  -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <div id="site-header"></div>
+
+  <main>
+    <!--
+      Every id="..." below is a hook that assets/js/script.js looks
+      for once assets/content/index.json has loaded. The text sitting
+      here right now is the FALLBACK — if the JSON ever fails to load,
+      this is exactly what visitors see, so the page never renders
+      blank or broken. Once the CMS is wired up, editing that JSON is
+      what actually changes the live site; editing the text below by
+      hand still works too, it just means editing the fallback copy
+      rather than the live content.
+    -->
+    <section class="hero" id="section-hero">
+      <div class="container hero__inner">
+        <p class="eyebrow" id="hero-eyebrow">Kismet Code Digital</p>
+        <h1 class="hero__headline"><span id="hero-headline-line1">Enterprise-grade solutions,</span><br /><span id="hero-headline-line2">built in Belize.</span></h1>
+        <p class="hero__sub" id="hero-subtext">
+          Custom websites and business systems engineered end to
+          end, for companies that need something built around how
+          they actually operate.
+        </p>
+        <div class="hero__actions">
+          <a href="/contact.html" class="btn btn--primary" id="hero-btn-primary">Request a quote</a>
+          <a href="/services.html" class="btn btn--ghost" id="hero-btn-secondary">What we build</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container platforms-section">
+      <p class="eyebrow" id="platforms-eyebrow">The difference</p>
+      <h2 class="platforms-section__title" id="platforms-title">A website is a brochure. A platform is infrastructure.</h2>
+
+      <!-- Removable as a whole block: contrast.show in index.json -->
+      <div class="contrast" id="section-contrast">
+        <div class="contrast__side contrast__side--old">
+          <p class="contrast__label" id="contrast-old-label">Most agencies</p>
+          <h3 id="contrast-old-heading">Sell pages.</h3>
+          <p id="contrast-old-body">A handful of static screens, dropped onto a template, with no real connection between the front end and how the business actually runs day to day.</p>
+        </div>
+        <div class="contrast__side contrast__side--new">
+          <p class="contrast__label" id="contrast-new-label">Kismet Code Digital</p>
+          <h3 id="contrast-new-heading">Builds systems.</h3>
+          <p id="contrast-new-body">A site or a full multi-portal platform, engineered around the specific business — admin, staff, and customer experiences that actually run the operation, not just describe it.</p>
+        </div>
+      </div>
+
+      <!--
+        Removable as a whole block: capabilityGrid.show in index.json.
+        The three cards below are FALLBACK only. Once content loads,
+        script.js empties this div and rebuilds it entirely from
+        capabilityGrid.cards — a real list, so cards can be deleted,
+        reordered, or added to from the CMS, not just edited in place.
+      -->
+      <div class="capability-grid" id="section-capability-grid">
+        <div class="capability-card">
+          <div class="capability-card__icon">P</div>
+          <h3 class="capability-card__title">Custom Platforms</h3>
+          <p class="capability-card__body">Multi-portal systems — admin, staff, and customer-facing — built on one shared foundation instead of stitched-together tools.</p>
+        </div>
+        <div class="capability-card">
+          <div class="capability-card__icon">A</div>
+          <h3 class="capability-card__title">Business Automation</h3>
+          <p class="capability-card__body">Workflows, request handling, and day-to-day operations wired directly into the platform, so less runs on manual effort.</p>
+        </div>
+        <div class="capability-card">
+          <div class="capability-card__icon">M</div>
+          <h3 class="capability-card__title">Ongoing Management</h3>
+          <p class="capability-card__body">Updates, fixes, and changes handled directly, for a site or platform that's already live and in use.</p>
+        </div>
+      </div>
+
+      <a href="/services.html" class="platforms-section__link" id="platforms-link">See the full process, stage by stage →</a>
+    </section>
+
+    <!-- Removable as a whole block: ctaBand.show in index.json -->
+    <section class="cta-band" id="section-cta-band">
+      <div class="container cta-band__inner">
+        <h2 id="cta-heading">Every project starts with a conversation.</h2>
+        <p id="cta-body">A straightforward quote, with no obligation.</p>
+        <a href="/contact.html" class="btn btn--primary" id="cta-button">Request a quote</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>
