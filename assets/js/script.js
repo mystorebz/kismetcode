@@ -1,6 +1,6 @@
 // Kismet Code Digital — shared site script
 // Handles: shared header/footer, contact form submission (Formspree),
-// services modal open/close
+// services modal open/close, CMS-editable page content
 
 // ==========================================================
 // SHARED HEADER & FOOTER
@@ -18,6 +18,11 @@
 // edit SITE_HEADER_HTML or SITE_FOOTER_HTML below, ONE TIME. Every
 // page picks up the change automatically. Nothing else needs to
 // change, on any page, ever, for that kind of update.
+//
+// NOTE: header/footer aren't wired into the CMS content system yet —
+// they're still hand-edited strings here. Same pattern (a list widget
+// for nav links and footer columns) can be applied to these later,
+// the same way it's applied to the homepage's capability cards below.
 
 const SITE_HEADER_HTML = `
   <header class="nav">
@@ -204,7 +209,151 @@ function initServicesModal() {
   });
 }
 
+// ==========================================================
+// PAGE CONTENT (CMS-EDITABLE)
+// ==========================================================
+// Each page's editable content — headlines, paragraphs, cards, and
+// whether an optional section is shown at all — lives in its own
+// JSON file under assets/content/ (e.g. assets/content/index.json
+// for the homepage). On load, this fetches that page's JSON (using
+// getCurrentPageKey() above to know which file) and drops the
+// values into the matching elements.
+//
+// The HTML on every page keeps its ORIGINAL hardcoded text as a
+// fallback. If the JSON ever fails to load, the page still displays
+// correctly — it just won't reflect the latest edit until that's
+// fixed. Nothing ever renders blank.
+//
+// Two small reusable helpers do most of the work:
+//   setText(id, value)            — fills in one field's text
+//   setLink(id, text, href)       — fills in a link's text + href
+//   toggleSection(id, shouldShow) — shows/hides an entire optional
+//                                   block (a "Show this section?"
+//                                   switch in the CMS)
+// Each page then gets its own render function (e.g. renderHomePage)
+// that maps THAT page's JSON fields onto THAT page's element ids,
+// using the three helpers above. As each additional page gets this
+// treatment, add its render function and one line to PAGE_RENDERERS.
+
+function setText(elementId, value) {
+  const el = document.getElementById(elementId);
+  if (el && value !== undefined && value !== null) {
+    el.textContent = value;
+  }
+}
+
+function setLink(elementId, text, href) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  if (text !== undefined && text !== null) el.textContent = text;
+  if (href !== undefined && href !== null) el.setAttribute('href', href);
+}
+
+function toggleSection(elementId, shouldShow) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  el.style.display = shouldShow === false ? 'none' : '';
+}
+
+function renderHomePage(content) {
+  if (!content) return;
+
+  // ---- Hero (always visible; text fields only, no show/hide) ----
+  if (content.hero) {
+    setText('hero-eyebrow', content.hero.eyebrow);
+    setText('hero-headline-line1', content.hero.headlineLine1);
+    setText('hero-headline-line2', content.hero.headlineLine2);
+    setText('hero-subtext', content.hero.subtext);
+    setLink('hero-btn-primary', content.hero.primaryButtonText, content.hero.primaryButtonLink);
+    setLink('hero-btn-secondary', content.hero.secondaryButtonText, content.hero.secondaryButtonLink);
+  }
+
+  // ---- "The difference" intro heading (always visible; text only —
+  // it introduces the two blocks below, so it isn't independently
+  // hideable the way those two are) ----
+  if (content.platformsIntro) {
+    setText('platforms-eyebrow', content.platformsIntro.eyebrow);
+    setText('platforms-title', content.platformsIntro.title);
+  }
+
+  // ---- Contrast block: removable as a whole section ----
+  if (content.contrast) {
+    toggleSection('section-contrast', content.contrast.show);
+    setText('contrast-old-label', content.contrast.oldLabel);
+    setText('contrast-old-heading', content.contrast.oldHeading);
+    setText('contrast-old-body', content.contrast.oldBody);
+    setText('contrast-new-label', content.contrast.newLabel);
+    setText('contrast-new-heading', content.contrast.newHeading);
+    setText('contrast-new-body', content.contrast.newBody);
+  }
+
+  // ---- Capability grid: removable as a whole section, AND its
+  // cards are a real list (each one deletable/addable on its own),
+  // not three fixed slots. The icon letter isn't stored anywhere —
+  // it's just the card title's first letter, so there's one less
+  // field for an editor to worry about getting right. ----
+  if (content.capabilityGrid) {
+    const gridEl = document.getElementById('section-capability-grid');
+    const cards = Array.isArray(content.capabilityGrid.cards) ? content.capabilityGrid.cards : [];
+    const shouldShow = content.capabilityGrid.show !== false && cards.length > 0;
+    toggleSection('section-capability-grid', shouldShow);
+
+    if (gridEl && shouldShow) {
+      gridEl.innerHTML = cards.map((card) => {
+        const icon = (card.title || '?').trim().charAt(0).toUpperCase();
+        return `
+          <div class="capability-card">
+            <div class="capability-card__icon">${icon}</div>
+            <h3 class="capability-card__title">${card.title || ''}</h3>
+            <p class="capability-card__body">${card.body || ''}</p>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  // ---- Link beneath the grid (always visible; text only) ----
+  if (content.platformsLink) {
+    setLink('platforms-link', content.platformsLink.text, content.platformsLink.link);
+  }
+
+  // ---- CTA band: removable as a whole section ----
+  if (content.ctaBand) {
+    toggleSection('section-cta-band', content.ctaBand.show);
+    setText('cta-heading', content.ctaBand.heading);
+    setText('cta-body', content.ctaBand.body);
+    setLink('cta-button', content.ctaBand.buttonText, content.ctaBand.buttonLink);
+  }
+}
+
+// Maps a page key (from getCurrentPageKey()) to the render function
+// that knows how to apply that page's JSON to that page's DOM. Add
+// one entry here for each page as it gets the same treatment —
+// e.g. services: renderServicesPage, about: renderAboutPage, etc.
+const PAGE_RENDERERS = {
+  index: renderHomePage,
+};
+
+async function loadPageContent() {
+  const pageKey = getCurrentPageKey();
+  const renderer = PAGE_RENDERERS[pageKey];
+  if (!renderer) return; // this page doesn't have CMS-editable content yet
+
+  try {
+    const response = await fetch(`/assets/content/${pageKey}.json`);
+    if (!response.ok) return; // fallback text already on the page stays as-is
+    const content = await response.json();
+    renderer(content);
+  } catch (err) {
+    // Fetch or parsing failed — silently keep the fallback text
+    // that's already hardcoded in the HTML rather than breaking
+    // the page.
+    console.warn('Could not load page content JSON:', err);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   injectSharedHeaderFooter();
   initServicesModal();
+  loadPageContent();
 });
