@@ -1,17 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
   <title>Content Manager — Kismet Code Digital</title>
+  <link href="config.yml" type="application/yaml" rel="cms-config-url" />
 </head>
 <body>
   <!--
-    This page loads Decap CMS itself. It automatically looks for
-    config.yml sitting right next to this file (in this same /admin
-    folder) — that file is what actually defines which pages and
-    fields show up as the editable dashboard.
+    Sveltia CMS — the actively maintained successor to Decap CMS.
+    Same config.yml format as before, but this uses the built-in
+    personal-access-token login instead of an external OAuth proxy,
+    so there's no separate repo, no Cloudflare Worker, no OAuth App
+    to deploy or maintain. Login prompts for a GitHub token directly.
   -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
