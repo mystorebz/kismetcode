@@ -2,10 +2,8 @@ backend:
   name: github
   repo: mystorebz/kismetcode
   branch: main
-  # ⬇️ REPLACE once the login proxy (Phase 2, next step) is deployed.
-  # Until this points at a real address, the "Login with GitHub"
-  # button on this dashboard will not work yet.
-  base_url: https://YOUR-OAUTH-WORKER-URL
+  # No base_url needed — logging in will prompt for a GitHub
+  # personal access token directly, with no external service involved.
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
